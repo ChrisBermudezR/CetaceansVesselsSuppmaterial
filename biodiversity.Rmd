@@ -1,0 +1,25 @@
+---
+title: "Biodiversity data"
+bibliography: Bibliography.bib
+link-citations: yes
+csl: "biodiversity-and-conservation.csl"
+nocite: '@*'
+---
+to evaluate the potential tourist-vessel collision risk for five cetacean species regularly observed in Colombia, we selected the following species to conduct habitat modelling analyses: 1) the Atlantic spotted dolphin (*S. frontalis*) only for the Caribbean Sea since it is endemic to the Atlantic Ocean [@Herzing2018].2) The humpback whale (*M. novaeangliae*) only for the Pacific Ocean, because the stock G uses the Colombian Pacific coast as part of its breeding zone [@Acevedo2017; @Avila2020]. 3) The bottlenose dolphin (*T. truncatus*) for both Caribbean and Pacific basins. 4) The pantropical spotted dolphin (*S. attenuata*) for both Caribbean and Pacific basins, but occurrences were separated according to the subspecies distribution [@Forney2012; @Jefferson2015], so the offshore pantropical spotted (*S. a. attenuata*) was analyzed in both Caribbean and Pacific basins, while the coastal pantropical spotted (*S. a. graffmani*) was modeled for coastal records only in the Pacific basin due it is exclusive to coastal waters of the eastern tropical Pacific [@Jefferson2015; @Perrin2018]. 5) The spinner dolphin (*S. longirostris*) also was analyzed for both basins and occurrences were separated by subspecies distribution, as follows: the Gray's spinner (*S. l. longirostris*) for the Caribbean basin, the Eastern spinner (*S. l. orientalis*) for coastal occurrences in the Pacific basin, and the Central American spinner (*S. l. centroamericana*) for offshore occurrences in the Pacific basin [@Forney2012; @Jefferson2015].
+
+The georeferenced occurrence data for cetacean species was compiled from ten (10) online databases using packages such as "*spocc*" (v 1.0.8; @Chamberlain2018), "*robis*" (v 2.3.9; @Provoost2020), "*rgbif*" (v 3.1.0; @Chamberlain2017), and "*sp*" (v 1.4-2; @Pebesma2005) with the R program [@RTeam2008].
+For the subspecies, the search was conducted explicitly using the complete name.
+The databases used were: the Atlas of Living Australia (ALA; <http://www.ala.org.au/>), Berkeley Ecoengine (Ecoengine; <https://ecoengine.berkeley.edu/>), Biodiversity Information Serving Our Nation (BISON; <https://bison.usgs.gov/>), Global Biodiversity Information Facility (GBIF; <https://www.gbif.org>), Integrated Digitized Biocollections (iDigBio; <https://www.idigbio.org/>), iNaturalist (iNat; <http://www.inaturalist.org/>), the Ocean Biogeographic Information System (OBIS; <https://obis.org>), Distributed databases with backbone (VertNet; <http://vertnet.org/>), the *Sistema de Información Ambiental Marina* (*SIAM*; <http://siam.invemar.org.co> operated by the Colombia's Marine and Coastal Research Institute INVEMAR), and the *Red Nacional de Datos Abiertos sobre Biodiversidad de Colombia* (*SiB Colombia*, <https://sibcolombia.net/>).\
+
+In addition to public databases, we used published records as well as unpublished data collected in the oceanographic cruises of the *DIMAR*, which were conducted in the frame of the ENSO Regional Study (*ERFEN*, for its acronym in Spanish) through the *Centro de Investigaciones Oceanográficas e Hidrográficas del Pacífico -- CCCP* (Supplementary Table 1).\
+
+The filtering of databases and the cleaning of duplicate records were carried out using the R program [@RTeam2008] with the "*tidyverse*" (v. 1.2.0; @Wickham2017), "*dplyr*" (v. 1.0; @Wickham2019), "*anytime*" (v. 0.3.7; @Eddelbuettel2020), "*rgdal*" (v. 1.5-12; @Bivand2020), "*gdata*" (v. 2.18.0; @Warnes2012), and "*devtools*" (v. 2.3.1; @Wickham2020) packages.
+
+
+
+# REFERENCES
+
+::: {#refs}
+:::
+
+\pagebreak

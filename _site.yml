@@ -1,0 +1,22 @@
+name: "Supplementary Material"
+output_dir: "."
+navbar:
+  title: "Supplementary Material"
+  left:
+  - text: "Home"
+    href: index.html
+  - text: "Study Area"
+    href: studyarea.html
+  - text: "Biodiversity data"
+    href: biodiversity.html
+  - text: "Environmental Predictors"
+    href: predictors.html
+  - text: "Habitat Suitability Modelling"
+    href: hsm.html
+
+    
+    
+output:
+  html_document:
+    theme: spacelab
+    highlight: tango

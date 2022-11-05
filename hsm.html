@@ -11,7 +11,7 @@
 
 
 
-<title>Study Area</title>
+<title>Habitat Suitability Modelling</title>
 
 <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -282,80 +282,73 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Study Area</h1>
+<h1 class="title toc-ignore">Habitat Suitability Modelling</h1>
 
 </div>
 
 
-<p>The Colombian Caribbean is considered oligotrophic, excepting in some
-coastal regions, such as Puerto Bolivar (La Guajira department) and
-Santa Marta (Magdalena department), where seasonal upwelling events that
-increase productivity in coastal areas allow occurrence of top predators
-such as cetaceans <span class="citation">(<a
-href="#ref-Gordon1967Circulation" role="doc-biblioref">Gordon 1967</a>;
-<a href="#ref-Fajardo1979" role="doc-biblioref">Fajardo 1979</a>; <a
-href="#ref-Andrade2003" role="doc-biblioref">Andrade et al. 2003</a>; <a
-href="#ref-Andrade2005" role="doc-biblioref">Andrade and Barton
-2005</a>; <a href="#ref-CrialesHernandez2006"
-role="doc-biblioref">Criales Hernández et al. 2006</a>; <a
-href="#ref-Lonin2010Atmospheric" role="doc-biblioref">Lonin et al.
-2010</a>; <a href="#ref-Paramo2011" role="doc-biblioref">Paramo et al.
-2011</a>; <a href="#ref-RuedaRoa2013" role="doc-biblioref">Rueda-Roa and
-Muller-Karger 2013</a>; <a href="#ref-Gutierrez2015"
-role="doc-biblioref">Gutiérrez et al. 2015</a>; <a
-href="#ref-FarasCurtidor2017" role="doc-biblioref">Farías-Curtidor et
-al. 2017</a>; <a href="#ref-barraganLuna2019"
-role="doc-biblioref">Barragán-Barrera et al. 2019c</a>)</span>.
-Conversely, the Colombian Pacific is influenced by coastal upwelling
-events thoroughly year, especially on February-April and
-November-December months <span class="citation">(<a
-href="#ref-Villegas1997" role="doc-biblioref">Villegas 1997</a>, <a
-href="#ref-Villegas2003" role="doc-biblioref">2003</a>; <a
-href="#ref-Diaz2008" role="doc-biblioref">Díaz and Gusmao
-2008</a>)</span> maintaining high productivity in coastal areas,
-especially in the Gorgona Island National Natural Park (NNP) <span
-class="citation">(<a href="#ref-Pineda1995" role="doc-biblioref">Pineda
-1995</a>)</span>.</p>
-<p>Both Caribbean and Pacific areas are influenced by tourism-vessel
-activities in Colombia; however, the main tourist purposes are different
-for each region. In the Caribbean, water tourism has been focused mainly
-on cruise ships and diving activities while in the Pacific tourist
-vessel traffic is principally for nature activities such as diving and
-whale-watching onboard pleasure vessels and small boats, respectively
-<span class="citation">(<a href="#ref-AguileraDiaz2006"
-role="doc-biblioref">Aguilera-Díaz et al. 2006</a>; <a
-href="#ref-Sanchez2010" role="doc-biblioref">Sánchez and
-Jaramillo-Hurtado 2010</a>; <a href="#ref-Brida2012"
-role="doc-biblioref">Brida et al. 2012</a>; <a href="#ref-Trujillo2013"
-role="doc-biblioref">Trujillo and Ávila 2013</a> )</span>. These
-differences are based on tourist infrastructure, which is highly
-developed in the Colombian Caribbean in contrast to the Pacific region.
-Along the 1,600 km of the Colombian Caribbean coastline are located
-tourist cities such as Cartagena de Indias, which has a greater hotel
-development <span class="citation">(<a href="#ref-AguileraDiaz2006"
-role="doc-biblioref">Aguilera-Díaz et al. 2006</a>; <a
-href="#ref-SanchezFernandez2010" role="doc-biblioref">Sánchez-Fernández
-et al. 2010</a>; <a href="#ref-Brida2012" role="doc-biblioref">Brida et
-al. 2012</a>)</span>. Conversely, the Pacific holds more pristine areas,
-being the ecotourism and the whale-watching activities predominant,
-because the Colombian Pacific is highly biodiverse and is part of the
-breeding zone for stock G humpback whales <span class="citation">(<a
-href="#ref-FlorezGonzalez2007" role="doc-biblioref">Flórez-González et
-al. 2007</a>; <a href="#ref-Sanchez2010" role="doc-biblioref">Sánchez
-and Jaramillo-Hurtado 2010</a>; <a href="#ref-AguayoLobo2011"
-role="doc-biblioref">Aguayo Lobo et al. 2011</a>; <a
-href="#ref-Trujillo2013" role="doc-biblioref">Trujillo and Ávila
-2013</a>; <a href="#ref-Acevedo2017" role="doc-biblioref">Acevedo et al.
-2017</a>; <a href="#ref-Fagua2019" role="doc-biblioref">Fagua and Ramsey
-2019</a>)</span>.</p>
-<div class="figure">
-<img src="Figure_01.png" alt="" />
-<p class="caption">Figure 1. Study area with the location of marine
-protected areas and main ports in the Colombian Exclusive Economic Zone
-(EEZ).</p>
-</div>
-<div id="references" class="section level1">
-<h1>REFERENCES</h1>
+<p>We used the R package “<em>sdm</em>” <span class="citation">(<a
+href="#ref-Naimi2016" role="doc-biblioref">Naimi and Araújo
+2016</a>)</span> with the MaxEnt algorithm <span class="citation">(<a
+href="#ref-Phillips2006" role="doc-biblioref">Phillips et al. 2006</a>;
+<a href="#ref-Elith2011" role="doc-biblioref">Elith et al. 2011</a>; <a
+href="#ref-Gomes2018" role="doc-biblioref">Gomes et al. 2018</a>)</span>
+to model the distribution of the cetacean species and subspecies in the
+Colombian Caribbean and Pacific basins. MaxEnt is a popular algorithm
+for producing species distributions maps and it was chosen due to
+competitive performance on small sample sizes and species presence-only
+data <span class="citation">(<a href="#ref-Phillips2006"
+role="doc-biblioref">Phillips et al. 2006</a>; <a
+href="#ref-MacLeod2008" role="doc-biblioref">MacLeod et al. 2008</a>; <a
+href="#ref-Praca2009" role="doc-biblioref">Praca et al. 2009</a>; <a
+href="#ref-Tobena2016" role="doc-biblioref">Tobeña et al. 2016</a>; <a
+href="#ref-Derville2018" role="doc-biblioref">Derville et al.
+2018</a>)</span>. In order to train the algorithm for each species and
+subspecies habitat suitability model (<span
+class="math inline">\(HSM_{sp}\)</span>), we used a set of the
+ecological predictors previously selected through the heuristic method
+for each species/subspecies, as well as the total of occurrences found
+in the online databases without discriminating by date. Because our goal
+was to obtain accurate maps of potential species/subspecies distribution
+in both ocean basins, and our model was based on a large enough sample
+size, the model feature settings were left by default to produce complex
+response surfaces <span class="citation">(according to <a
+href="#ref-Elith2011" role="doc-biblioref">Elith et al.
+2011</a>)</span>.Thus, construction model was based on following
+assumptions: the inclusion of relevant ecological determinants (or
+surrogates), the detectability does not change through the habitat
+gradients, the occurrences filtering guarantees each species record
+represents new information (for example, the same individual is not
+reported twice), and occurrences obtained represent the best
+species/subspecies distribution known in the study area.</p>
+<p>For model validation, we randomly selected 70% of data for model
+calibration and 30% for predictions validation. Then, we adopted Pearson
+correlation coefficient values obtained from the point biserial
+correlation (COR) and the true skill statistic (TSS, which is needed to
+select a threshold) <span class="citation">(<a href="#ref-Liu2005"
+role="doc-biblioref">Liu et al. 2005</a>, <a href="#ref-Liu2016"
+role="doc-biblioref">2016</a>)</span>, as indicators of good model
+performance <span class="citation">(<a href="#ref-Elith2006"
+role="doc-biblioref">Elith et al. 2006</a> )</span>. The models were
+evaluated using a 5-fold cross-validation method generating 50
+replicates for each species/subspecies. We applied the background
+thickening technique <span class="citation">(<a
+href="#ref-Vollering2019" role="doc-biblioref">Vollering et al.
+2019</a>)</span> to avoid sampling bias in the background construction.
+Finally, we categorized each model into five levels of suitability, in
+which “very low” represented the value below the threshold, which was
+calculated by maximizing the sum of sensitivity and specificity (MaxSSS)
+because this method produces consistent results with presence-only data
+<span class="citation">(<a href="#ref-Liu2005" role="doc-biblioref">Liu
+et al. 2005</a>, <a href="#ref-Liu2016"
+role="doc-biblioref">2016</a>)</span>. Above the threshold value, we
+obtained “low”, “medium”, “high”, and “very high” categories by dividing
+the remaining habitat suitability values into equal parts. This
+categorization was carried out using the “reclassify” function of the R
+“raster” package (v 3.4-10; <span class="citation">Hijmans et al. (<a
+href="#ref-Hijmans2020" role="doc-biblioref">2020</a>)</span>).</p>
+<div id="references" class="section level2">
+<h2>REFERENCES</h2>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Acevedo2017" class="csl-entry">
 Acevedo J, Aguayo-Lobo A, Allen J, et al (2017) <span

@@ -1,0 +1,13 @@
+---
+title: "Supplementary Material"
+
+---
+
+# Risk Assessment of Potential Tourist-Vessel Collision with cetaceans in the Colombian EEZ.
+
+This supplementary material contains the files and scripts that were used to develop the analysis of the research article entitled "Risk Assessment of Potential Tourist-Vessel Collision with cetaceans in the Colombian EEZ".
+
+
+
+All the scripts and data used in this analysis are available at this GitHub repository. [https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment](https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment)
+
