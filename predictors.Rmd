@@ -3,7 +3,7 @@ title: "Environmental predictors"
 bibliography: Bibliography.bib
 link-citations: yes
 csl: "biodiversity-and-conservation.csl"
-nocite: '@*'
+
 ---
 
 Based on previous cetacean niche modeling analyses (*e.g.*, @Barragan2019; @Amaral2015; @Tobena2016), dynamic and topographical type predictors data layers were selected (Table 1; Supplementary Figure 1).\

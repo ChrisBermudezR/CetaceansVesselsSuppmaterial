@@ -3,7 +3,7 @@ title: "Study Area"
 bibliography: Bibliography.bib
 link-citations: yes
 csl: "biodiversity-and-conservation.csl"
-nocite: '@*'
+
 ---
 
 The Colombian Caribbean is considered oligotrophic, excepting in some coastal regions, such as Puerto Bolivar (La Guajira department) and Santa Marta (Magdalena department), where seasonal upwelling events that increase productivity in coastal areas allow occurrence of top predators such as cetaceans [@Andrade2003; @Andrade2005; @barraganLuna2019; @CrialesHernandez2006; @Fajardo1979; @FarasCurtidor2017; @Gordon1967Circulation; @Gutierrez2015; @Lonin2010Atmospheric; @Paramo2011; @RuedaRoa2013]. Conversely, the Colombian Pacific is influenced by coastal upwelling events thoroughly year, especially on February-April and November-December months [@Diaz2008; @Villegas1997; @Villegas2003] maintaining high productivity in coastal areas, especially in the Gorgona Island National Natural Park (NNP) [@Pineda1995].

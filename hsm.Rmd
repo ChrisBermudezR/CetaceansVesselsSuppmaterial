@@ -3,7 +3,7 @@ title: "Habitat Suitability Modelling"
 bibliography: Bibliography.bib
 link-citations: yes
 csl: "biodiversity-and-conservation.csl"
-nocite: '@*'
+
 ---
 
 We used the R package "*sdm*" [@Naimi2016] with the MaxEnt algorithm [@Elith2011; @Gomes2018; @Phillips2006] to model the distribution of the cetacean species and subspecies in the Colombian Caribbean and Pacific basins. MaxEnt is a popular algorithm for producing species distributions maps and it was chosen due to competitive performance on small sample sizes and species presence-only data [@Derville2018; @MacLeod2008; @Phillips2006; @Praca2009; @Tobena2016]. In order to train the algorithm for each species and subspecies habitat suitability model ($HSM_{sp}$), we used a set of the ecological predictors previously selected through the heuristic method for each species/subspecies, as well as the total of occurrences found in the online databases without discriminating by date. Because our goal was to obtain accurate maps of potential species/subspecies distribution in both ocean basins, and our model was based on a large enough sample size, the model feature settings were left by default to produce complex response surfaces [according to @Elith2011].Thus, construction model was based on following assumptions: the inclusion of relevant ecological determinants (or surrogates), the detectability does not change through the habitat gradients, the occurrences filtering guarantees each species record represents new information (for example, the same individual is not reported twice), and occurrences obtained represent the best species/subspecies distribution known in the study area.
