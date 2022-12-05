@@ -42,6 +42,100 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -270,6 +364,15 @@ $(document).ready(function () {
 <li>
   <a href="hsm.html">Habitat Suitability Modelling</a>
 </li>
+<li>
+  <a href="tra.html">Tourism Route Analysis</a>
+</li>
+<li>
+  <a href="survey.html">Suvey Analysis</a>
+</li>
+<li>
+  <a href="oa.html">Overlapping Analysis</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -287,64 +390,127 @@ $(document).ready(function () {
 </div>
 
 
-<p>Based on previous cetacean niche modeling analyses (<em>e.g.</em>,
+<p>keep this in the main text!</p>
+<p>**<em>Based on previous cetacean niche modeling analyses (</em>e.g.*,
 <span class="citation">Barragán-Barrera et al. (<a
 href="#ref-Barragan2019" role="doc-biblioref">2019</a>)</span>; <span
 class="citation">Do Amaral et al. (<a href="#ref-Amaral2015"
 role="doc-biblioref">2015</a>)</span>; <span class="citation">Tobeña et
 al. (<a href="#ref-Tobena2016" role="doc-biblioref">2016</a>)</span>),
 dynamic and topographical type predictors data layers were selected
-(Table 1; Supplementary Figure 1).<br />
-</p>
-<p>The topographical or static predictors included topographic features
-such as bathymetry and slope, as well as the distance to the main bottom
-geomorphological characteristics such as the continental shelf
-(Dist_Shelf), oceanic ridges (Dist_Ridges), oceanic trenches
-(Dist_Trenches), and seamounts (Dist_seamounts).<br />
-</p>
-<p>To create these topographic predictors, the General Bathymetric Chart
-of the Oceans source (GEBCO, <a href="https://www.gebco.net/"
-class="uri">https://www.gebco.net/</a>) was used for bathymetry, and the
-slope was derived from this layer, using the “Slope” tool from the
-spatial extension analyst of the ESRI’s ArcGIS® program (v. 10.6; <span
-class="citation">ESRI (<a href="#ref-ESRI2017"
-role="doc-biblioref">2017</a>)</span>). Layers for the other
-geomorphological characteristics were derived from the Seafloor
-Geomorphic Feature Map (<a
-href="https://www.bluehabitats.org/?page_id=9"
-class="uri">https://www.bluehabitats.org/?page_id=9</a>) <span
-class="citation">(<a href="#ref-Harris2014" role="doc-biblioref">Harris
-et al. 2014</a>)</span>, and distance calculations were obtained using
-the “Euclidean Distance” tool from the spatial analyst extension of
+(Table 1; Supplementary Figure 1).***</p>
+<p>*<strong>The topographical or static predictors included topographic
+features such as bathymetry and slope, as well as the distance to the
+main bottom geomorphological characteristics such as the continental
+shelf (Dist_Shelf), oceanic ridges (Dist_Ridges), oceanic trenches
+(Dist_Trenches), and seamounts (Dist_seamounts).*</strong></p>
+<div id="data-sources" class="section level2">
+<h2>Data Sources</h2>
+<p>To create the topographic predictors, the <em>General Bathymetric
+Chart of the Oceans</em> (GEBCO, <a
+href="https://www.gebco.net/">https://www.gebco.net/</a>) and the
+<em>Seafloor Geomorphic Feature Map</em> (<a
+href="https://www.bluehabitats.org/?page_id=9">https://www.bluehabitats.org/?page_id=9</a>)
+<span class="citation">(<a href="#ref-Harris2014"
+role="doc-biblioref">Harris et al. 2014</a>)</span> were used as spatial
+data sources. All this data were downloaded manually.</p>
+<p>For the dynamic predictors, the data source used was the
+<em>Copernicus Marine Service Information</em> (<a
+href="https://resources.marine.copernicus.eu/?option=com_csw&amp;task=results">&lt;https://resources.marine.copernicus.eu/?option=com_csw&amp;task=results</a>).
+Data was automatically downloaded through a script on
+<strong>Python</strong> - <em>Miniconda</em> program using the MOTU
+Client of the <em>Copernicus Marine Service</em>.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Title of the Script: Download data from Copernicus</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Authors: Christian Bermúdez and Maria del Pilar Aguirre-Tapiero</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Objective: Download NetCDF Archives from Copernicus: https://resources.marine.copernicus.eu/products</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Program Language: Python</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Date: December 2021</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Notes: Don&#39;t forget to download Minicoda https://docs.conda.io/en/latest/miniconda.html in order to execute this code. Change the words *USERNAME* and *PASSWORD* with your own credentials.</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">###############################################################################################################################</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">####Install the motuclient for downloading the data from Copernicus####</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m pip install motuclient<span class="op">==</span><span class="fl">1.8.4</span> <span class="op">--</span>no<span class="op">-</span>cache<span class="op">-</span><span class="bu">dir</span>  </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">####Biological predictors####</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#mnkc_epi mass content of epipelagic micronekton expressed as wet weight in sea water </span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_BGC_001_033<span class="op">-</span>TDS <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_bgc_my_0<span class="fl">.083</span><span class="er">deg</span><span class="op">-</span>lmtl_PT1D<span class="op">-</span>i <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span> <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span>  <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;1998-01-01 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2010-12-31 12:00:00&quot;</span> <span class="op">--</span>variable mnkc_epi  <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;mnkc_epi_1998_2010.nc&quot;</span> <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;PASSWORD&quot;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_BGC_001_033<span class="op">-</span>TDS <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_bgc_my_0<span class="fl">.083</span><span class="er">deg</span><span class="op">-</span>lmtl_PT1D<span class="op">-</span>i <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span> <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span>  <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;2011-01-01 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2020-05-31 12:00:00&quot;</span> <span class="op">--</span>variable mnkc_epi  <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;mnkc_epi_2011_2020.nc&quot;</span> <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;PASSWORD&quot;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#mnkc_mumeso mass content of migrant upper mesopelagic micronekton expressed as wet weight in sea water </span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_BGC_001_033<span class="op">-</span>TDS <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_bgc_my_0<span class="fl">.083</span><span class="er">deg</span><span class="op">-</span>lmtl_PT1D<span class="op">-</span>i <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span> <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span>  <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;1998-01-01 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2010-12-31 12:00:00&quot;</span> <span class="op">--</span>variable mnkc_mumeso  <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;mnkc_mumeso_1998_2010.nc&quot;</span> <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;&quot;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_BGC_001_033<span class="op">-</span>TDS <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_bgc_my_0<span class="fl">.083</span><span class="er">deg</span><span class="op">-</span>lmtl_PT1D<span class="op">-</span>i <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span> <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span>  <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;2011-01-01 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2020-05-31 12:00:00&quot;</span> <span class="op">--</span>variable mnkc_mumeso  <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;mnkc_mumeso_2011_2020.nc&quot;</span> <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;PASSWORD&quot;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#mnkc_umeso mass content of upper mesopelagic micronekton expressed as wet weight in sea water </span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_BGC_001_033<span class="op">-</span>TDS <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_bgc_my_0<span class="fl">.083</span><span class="er">deg</span><span class="op">-</span>lmtl_PT1D<span class="op">-</span>i <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span> <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span>  <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;1998-01-01 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2010-12-31 12:00:00&quot;</span> <span class="op">--</span>variable mnkc_umeso  <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;mnkc_umeso_1998_2020.nc&quot;</span> <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;PASSWORD&quot;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_BGC_001_033<span class="op">-</span>TDS <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_bgc_my_0<span class="fl">.083</span><span class="er">deg</span><span class="op">-</span>lmtl_PT1D<span class="op">-</span>i <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span> <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span>  <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;2011-01-01 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2020-05-31 12:00:00&quot;</span> <span class="op">--</span>variable mnkc_umeso  <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;mnkc_umeso_2011_2020.nc&quot;</span> <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;PASSWORD&quot;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">####Physical predictors####</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">#euphotic zone depth</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">#zeu</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_BGC_001_033<span class="op">-</span>TDS <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_bgc_my_0<span class="fl">.083</span><span class="er">deg</span><span class="op">-</span>lmtl_PT1D<span class="op">-</span>i <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span> <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span>  <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;1998-01-01 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2010-12-31 12:00:00&quot;</span> <span class="op">--</span>variable zeu  <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;zeu_1998_2020.nc&quot;</span> <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;PASSWORD&quot;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_BGC_001_033<span class="op">-</span>TDS <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_bgc_my_0<span class="fl">.083</span><span class="er">deg</span><span class="op">-</span>lmtl_PT1D<span class="op">-</span>i <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span> <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span>  <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;2011-01-01 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2020-05-31 12:00:00&quot;</span> <span class="op">--</span>variable zeu  <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;zeu_2011_2020.nc&quot;</span> <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;PASSWORD&quot;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co">#Sea floor potential temperature  sea_water_potential_temperature_at_sea_floor  degrees_C</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co">#bottomT</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_PHY_001_030<span class="op">-</span>TDS <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_phy_my_0<span class="fl">.083</span><span class="er">_P1M</span><span class="op">-</span>m <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span> <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span>  <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;1998-01-01 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2020-05-31 12:00:00&quot;</span> <span class="op">--</span>depth<span class="op">-</span><span class="bu">min</span> <span class="fl">0.494</span> <span class="op">--</span>depth<span class="op">-</span><span class="bu">max</span> <span class="dv">10</span> <span class="op">--</span>variable bottomT <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;bottomT_1998_2020.nc&quot;</span>  <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;PASSWORD&quot;</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co">#Density ocean mixed layer thickness ocean_mixed_layer_thickness_defined_by_sigma_theta m</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">#zos</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_PHY_001_030<span class="op">-</span>TDS <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_phy_my_0<span class="fl">.083</span><span class="er">_P1M</span><span class="op">-</span>m <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span> <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span>  <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;1998-01-01 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2020-05-31 12:00:00&quot;</span> <span class="op">--</span>depth<span class="op">-</span><span class="bu">min</span> <span class="fl">0.494</span> <span class="op">--</span>depth<span class="op">-</span><span class="bu">max</span> <span class="dv">10</span> <span class="op">--</span>variable zos <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;zos_1998_2020.nc&quot;</span>  <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;PASSWORD&quot;</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co">#Sea surface height sea_surface_height_above_geoid m</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co">#mlotst</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_PHY_001_030<span class="op">-</span>TDS <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_phy_my_0<span class="fl">.083</span><span class="er">_P1M</span><span class="op">-</span>m <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span> <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span>  <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;1998-01-01 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2020-05-31 12:00:00&quot;</span> <span class="op">--</span>depth<span class="op">-</span><span class="bu">min</span> <span class="fl">0.494</span> <span class="op">--</span>depth<span class="op">-</span><span class="bu">max</span> <span class="dv">10</span> <span class="op">--</span>variable mlotst <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;mlotst_1998_2020.nc&quot;</span>  <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;PASSWORD&quot;</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="co">#Temperature sea_water_potential_temperature  degrees_C</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="co">#thetao</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_PHY_001_030<span class="op">-</span>TDS <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_phy_my_0<span class="fl">.083</span><span class="er">_P1M</span><span class="op">-</span>m <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span> <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span>  <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;1998-01-01 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2020-05-31 12:00:00&quot;</span> <span class="op">--</span>depth<span class="op">-</span><span class="bu">min</span> <span class="fl">0.494</span> <span class="op">--</span>depth<span class="op">-</span><span class="bu">max</span> <span class="dv">270</span> <span class="op">--</span>variable thetao <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;thetao_1998_2020.nc&quot;</span>  <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;PASSWORD&quot;</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="co">#Salinity sea_water_salinity 1e-3</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="co">#so</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_PHY_001_030<span class="op">-</span>TDS  <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_phy_my_0<span class="fl">.083</span><span class="er">_P1M</span><span class="op">-</span>m <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span>  <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;1998-01-16 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2020-05-31 12:00:00&quot;</span> <span class="op">--</span>depth<span class="op">-</span><span class="bu">min</span> <span class="fl">0.494</span> <span class="op">--</span>depth<span class="op">-</span><span class="bu">max</span> <span class="dv">270</span> <span class="op">--</span>variable so <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;so_1998_2020.nc&quot;</span>  <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;PASSWORD&quot;</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co">#eastward_sea_water_velocity m s-1 </span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="co">#uo</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_PHY_001_030<span class="op">-</span>TDS <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_phy_my_0<span class="fl">.083</span><span class="er">_P1M</span><span class="op">-</span>m <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span> <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span>  <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;1998-01-01 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2020-05-31 12:00:00&quot;</span> <span class="op">--</span>depth<span class="op">-</span><span class="bu">min</span> <span class="fl">0.494</span> <span class="op">--</span>depth<span class="op">-</span><span class="bu">max</span> <span class="dv">270</span> <span class="op">--</span>variable uo <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;uo_1998_2020.nc&quot;</span>  <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;PASSWORD&quot;</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="co">#northward_sea_water_velocity m s-1</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="co">#vo</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m motuclient <span class="op">--</span>motu https:<span class="op">//</span>my.cmems<span class="op">-</span>du.eu<span class="op">/</span>motu<span class="op">-</span>web<span class="op">/</span>Motu <span class="op">--</span>service<span class="op">-</span><span class="bu">id</span> GLOBAL_MULTIYEAR_PHY_001_030<span class="op">-</span>TDS <span class="op">--</span>product<span class="op">-</span><span class="bu">id</span> cmems_mod_glo_phy_my_0<span class="fl">.083</span><span class="er">_P1M</span><span class="op">-</span>m <span class="op">--</span>longitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">86</span> <span class="op">--</span>longitude<span class="op">-</span><span class="bu">max</span> <span class="op">-</span><span class="dv">69</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">min</span> <span class="op">-</span><span class="dv">1</span> <span class="op">--</span>latitude<span class="op">-</span><span class="bu">max</span> <span class="dv">17</span>  <span class="op">--</span>date<span class="op">-</span><span class="bu">min</span> <span class="st">&quot;1998-01-01 12:00:00&quot;</span> <span class="op">--</span>date<span class="op">-</span><span class="bu">max</span> <span class="st">&quot;2020-05-31 12:00:00&quot;</span> <span class="op">--</span>depth<span class="op">-</span><span class="bu">min</span> <span class="fl">0.494</span> <span class="op">--</span>depth<span class="op">-</span><span class="bu">max</span> <span class="dv">270</span> <span class="op">--</span>variable vo <span class="op">--</span>out<span class="op">-</span><span class="bu">dir</span> <span class="st">&quot;..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment</span><span class="ch">\02</span><span class="st">_Predictors</span><span class="ch">\01</span><span class="st">_NetCDF</span><span class="ch">\01</span><span class="st">_Download&quot;</span> <span class="op">--</span>out<span class="op">-</span>name <span class="st">&quot;vo_1998_2020.nc&quot;</span>  <span class="op">--</span>user <span class="st">&quot;USERNAME&quot;</span> <span class="op">--</span>pwd <span class="st">&quot;PASSWORD&quot;</span></span></code></pre></div>
+</div>
+<div id="data-processing" class="section level2">
+<h2>Data Processing</h2>
+<p>To develop the slope data layer from the bathymetry layer of GEBCO,
+we used the tool “Slope” from the spatial analyst extension of the
 ESRI’s ArcGIS® program (v. 10.6; <span class="citation">ESRI (<a
-href="#ref-ESRI2017" role="doc-biblioref">2017</a>)</span>) (Table 1;
-Supplementary Figure 1).</p>
-<p>Among dynamic predictors, we included the attenuation coefficient
-(At_coef), mixed-layer depth (Mixed_Layer), sea bottom temperature
-(Bottom_T), sea current speed (Vel_current), surface primary production
-(PP), sea surface salinity (Sal), and sea surface temperature (Temp). To
-create these predictors, we used data from 1993-01-01 to 2019-06-25 with
-8.5 km spatial resolution from the E.U. Copernicus Marine Service
-Information: Global Ocean Physics Reanalysis Glorys 12V1 (PHYS 001-030)
-(<a
-href="https://resources.marine.copernicus.eu/?option=com_csw&amp;task=results"
-class="uri">https://resources.marine.copernicus.eu/?option=com_csw&amp;task=results</a>).<br />
-</p>
-<p>Data was downloaded in NetCDF format and was processed with the
-Climate Data Operator (CDO) command for Linux Ubuntu v. 18.4. For each
-variable, the mean and standard deviation were calculated, maintaining
-the same spatial resolution (Table 1; Supplementary Figure 1).</p>
-<p>All environmental raster layers were processed in the R program <span
-class="citation">(<a href="#ref-RTeam2008" role="doc-biblioref">R
-Development Core Team 2008</a>)</span> using the “<em>raster</em>”
-package (v.3.4-10; <span class="citation">Hijmans et al. (<a
-href="#ref-Hijmans2020" role="doc-biblioref">2020</a>)</span>). In order
-to avoid area calculation errors <span class="citation">(<a
+href="#ref-ESRI2017" role="doc-biblioref">2017</a>)</span>) and to
+obtain the distances derived layers like the “Distances to the coast”,
+we used the “Euclidean Distance” tool from the spatial analyst extension
+of ESRI’s ArcGIS® program (v. 10.6; <span class="citation">ESRI (<a
+href="#ref-ESRI2017" role="doc-biblioref">2017</a>)</span>).</p>
+<p>To develop the layers from the dynamic data, we used data from
+1993-01-01 to 2020-05-31 with 8.5 km spatial resolution and depth of 200
+meters from the E.U. <em>Copernicus Marine Service Information: Global
+Ocean Physics Reanalysis Glorys 12V1 (PHYS 001-030)</em></p>
+<p>After this, all environmental raster layers were processed in the R
+program <span class="citation">(<a href="#ref-RTeam2008"
+role="doc-biblioref">R Development Core Team 2008</a>)</span> using the
+“<em>raster</em>” package (v.3.4-10; <span class="citation">Hijmans et
+al. (<a href="#ref-Hijmans2020" role="doc-biblioref">2020</a>)</span>).
+In order to avoid area calculation errors <span class="citation">(<a
 href="#ref-Sillero2021" role="doc-biblioref">Sillero and Barbosa
 2021</a>)</span>, all layers were projected to the Robinson coordinate
 system, maintaining the same spatial extent (north: 1885709.906800 m,
 south: -1595010.207100 m, east: -5625484.156700 m, west: -8664897.024700
-m) and the same grid resolution (8.5 km) (Supplementary Figure 1).<br />
+m) and the same grid resolution (8.5 km).</p>
+</div>
+<div id="selection-of-environmental-predictors" class="section level2">
+<h2>Selection of Environmental predictors</h2>
+<p>(Supplementary Figure 1).<br />
 </p>
 <p>To prevent overfitted models, the variables’ selection was conducted
 using a heuristic approach <span class="citation">(<a
@@ -389,6 +555,7 @@ we selected environmental predictors that remained within the dolphins
 and baleen whales limits of meso and macro scales-of-sense (from 10 km
 to 1,000 km in distance) <span class="citation">(<a
 href="#ref-Torres2017" role="doc-biblioref">Torres 2017</a>)</span>.</p>
+</div>
 <div id="references" class="section level1">
 <h1>REFERENCES</h1>
 <div id="refs" class="references csl-bib-body hanging-indent">

@@ -1,0 +1,15 @@
+---
+title: "Tourism Route Analysis"
+bibliography: Bibliography.bib
+link-citations: yes
+csl: "biodiversity-and-conservation.csl"
+
+---
+
+
+# REFERENCES
+
+::: {#refs}
+:::
+
+\pagebreak

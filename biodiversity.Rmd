@@ -5,6 +5,9 @@ link-citations: yes
 csl: "biodiversity-and-conservation.csl"
 
 ---
+
+## Data Sources
+
 to evaluate the potential tourist-vessel collision risk for five cetacean species regularly observed in Colombia, we selected the following species to conduct habitat modelling analyses: 1) the Atlantic spotted dolphin (*S. frontalis*) only for the Caribbean Sea since it is endemic to the Atlantic Ocean [@Herzing2018].2) The humpback whale (*M. novaeangliae*) only for the Pacific Ocean, because the stock G uses the Colombian Pacific coast as part of its breeding zone [@Acevedo2017; @Avila2020]. 3) The bottlenose dolphin (*T. truncatus*) for both Caribbean and Pacific basins. 4) The pantropical spotted dolphin (*S. attenuata*) for both Caribbean and Pacific basins, but occurrences were separated according to the subspecies distribution [@Forney2012; @Jefferson2015], so the offshore pantropical spotted (*S. a. attenuata*) was analyzed in both Caribbean and Pacific basins, while the coastal pantropical spotted (*S. a. graffmani*) was modeled for coastal records only in the Pacific basin due it is exclusive to coastal waters of the eastern tropical Pacific [@Jefferson2015; @Perrin2018]. 5) The spinner dolphin (*S. longirostris*) also was analyzed for both basins and occurrences were separated by subspecies distribution, as follows: the Gray's spinner (*S. l. longirostris*) for the Caribbean basin, the Eastern spinner (*S. l. orientalis*) for coastal occurrences in the Pacific basin, and the Central American spinner (*S. l. centroamericana*) for offshore occurrences in the Pacific basin [@Forney2012; @Jefferson2015].
 
 The georeferenced occurrence data for cetacean species was compiled from ten (10) online databases using packages such as "*spocc*" (v 1.0.8; @Chamberlain2018), "*robis*" (v 2.3.9; @Provoost2020), "*rgbif*" (v 3.1.0; @Chamberlain2017), and "*sp*" (v 1.4-2; @Pebesma2005) with the R program [@RTeam2008].
