@@ -23,5 +23,5 @@ navbar:
     
 output:
   html_document:
-    theme: spacelab
-    highlight: tango
+    theme: yeti
+    highlight: textmate

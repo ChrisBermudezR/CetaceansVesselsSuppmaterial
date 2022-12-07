@@ -5,96 +5,70 @@ link-citations: yes
 csl: "biodiversity-and-conservation.csl"
 
 ---
-keep this in the main text!
-
-***Based on previous cetacean niche modeling analyses (*e.g.*, @Barragan2019; @Amaral2015; @Tobena2016), dynamic and topographical type predictors data layers were selected (Table 1; Supplementary Figure 1).\***
-
-***The topographical or static predictors included topographic features such as bathymetry and slope, as well as the distance to the main bottom geomorphological characteristics such as the continental shelf (Dist_Shelf), oceanic ridges (Dist_Ridges), oceanic trenches (Dist_Trenches), and seamounts (Dist_seamounts).\***
 
 
+## Data sources
+
+To create the topographic predictors, *General Bathymetric Chart of the Oceans*  (GEBCO, [https://www.gebco.net/](https://www.gebco.net/)) and the *Seafloor Geomorphic Feature Map* ([https://www.bluehabitats.org/?page_id=9](https://www.bluehabitats.org/?page_id=9)) [@Harris2014] were used as spatial data sources. All these data were manually downloaded.
+
+The main data source to obtain the dynamic predictors was the *Copernicus Marine Service Information* ([<https://resources.marine.copernicus.eu/?option=com_csw&task=results](https://resources.marine.copernicus.eu/?option=com_csw&task=results)). The data were downloaded automatically through a [script](https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_NetCDF/01_Predictors_Download.py) built in the Python programming language using the [MINICONDA](https://docs.conda.io/en/latest/miniconda.html) frame and the [MOTU](https://help.marine.copernicus.eu/en/articles/4796533-what-are-the-motu-apis#h_3d33beaafc) Client API of the *Copernicus Marine Service*. 
 
 
-## Data Sources
 
-
-To create the topographic predictors, the *General Bathymetric Chart of the Oceans*  (GEBCO, [https://www.gebco.net/](https://www.gebco.net/)) and the *Seafloor Geomorphic Feature Map* ([https://www.bluehabitats.org/?page_id=9](https://www.bluehabitats.org/?page_id=9)) [@Harris2014] were used as spatial data sources. All this data were downloaded manually.
-
-
-For the dynamic predictors, the data source used was the *Copernicus Marine Service Information* ([<https://resources.marine.copernicus.eu/?option=com_csw&task=results](https://resources.marine.copernicus.eu/?option=com_csw&task=results)). Data was automatically downloaded through a script on **Python** - *Miniconda* program using the MOTU Client of the *Copernicus Marine Service*. 
-
-```python
-#Title of the Script: Download data from Copernicus
-#Authors: Christian Bermúdez and Maria del Pilar Aguirre-Tapiero
-#Objective: Download NetCDF Archives from Copernicus: https://resources.marine.copernicus.eu/products
-#Program Language: Python
-#Date: December 2021
-#Notes: Don't forget to download Minicoda https://docs.conda.io/en/latest/miniconda.html in order to execute this code. Change the words *USERNAME* and *PASSWORD* with your own credentials.
-###############################################################################################################################
-####Install the motuclient for downloading the data from Copernicus####
-python -m pip install motuclient==1.8.4 --no-cache-dir  
-
-####Biological predictors####
-
-#mnkc_epi mass content of epipelagic micronekton expressed as wet weight in sea water 
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_BGC_001_033-TDS --product-id cmems_mod_glo_bgc_my_0.083deg-lmtl_PT1D-i --longitude-min -86 --longitude-max -69 --latitude-min -1 --latitude-max 17  --date-min "1998-01-01 12:00:00" --date-max "2010-12-31 12:00:00" --variable mnkc_epi  --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "mnkc_epi_1998_2010.nc" --user "USERNAME" --pwd "PASSWORD"
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_BGC_001_033-TDS --product-id cmems_mod_glo_bgc_my_0.083deg-lmtl_PT1D-i --longitude-min -86 --longitude-max -69 --latitude-min -1 --latitude-max 17  --date-min "2011-01-01 12:00:00" --date-max "2020-05-31 12:00:00" --variable mnkc_epi  --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "mnkc_epi_2011_2020.nc" --user "USERNAME" --pwd "PASSWORD"
-
-
-#mnkc_mumeso mass content of migrant upper mesopelagic micronekton expressed as wet weight in sea water 
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_BGC_001_033-TDS --product-id cmems_mod_glo_bgc_my_0.083deg-lmtl_PT1D-i --longitude-min -86 --longitude-max -69 --latitude-min -1 --latitude-max 17  --date-min "1998-01-01 12:00:00" --date-max "2010-12-31 12:00:00" --variable mnkc_mumeso  --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "mnkc_mumeso_1998_2010.nc" --user "USERNAME" --pwd ""
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_BGC_001_033-TDS --product-id cmems_mod_glo_bgc_my_0.083deg-lmtl_PT1D-i --longitude-min -86 --longitude-max -69 --latitude-min -1 --latitude-max 17  --date-min "2011-01-01 12:00:00" --date-max "2020-05-31 12:00:00" --variable mnkc_mumeso  --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "mnkc_mumeso_2011_2020.nc" --user "USERNAME" --pwd "PASSWORD"
-
-#mnkc_umeso mass content of upper mesopelagic micronekton expressed as wet weight in sea water 
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_BGC_001_033-TDS --product-id cmems_mod_glo_bgc_my_0.083deg-lmtl_PT1D-i --longitude-min -86 --longitude-max -69 --latitude-min -1 --latitude-max 17  --date-min "1998-01-01 12:00:00" --date-max "2010-12-31 12:00:00" --variable mnkc_umeso  --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "mnkc_umeso_1998_2020.nc" --user "USERNAME" --pwd "PASSWORD"
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_BGC_001_033-TDS --product-id cmems_mod_glo_bgc_my_0.083deg-lmtl_PT1D-i --longitude-min -86 --longitude-max -69 --latitude-min -1 --latitude-max 17  --date-min "2011-01-01 12:00:00" --date-max "2020-05-31 12:00:00" --variable mnkc_umeso  --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "mnkc_umeso_2011_2020.nc" --user "USERNAME" --pwd "PASSWORD"
-
-
-####Physical predictors####
-
-#euphotic zone depth
-#zeu
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_BGC_001_033-TDS --product-id cmems_mod_glo_bgc_my_0.083deg-lmtl_PT1D-i --longitude-min -86 --longitude-max -69 --latitude-min -1 --latitude-max 17  --date-min "1998-01-01 12:00:00" --date-max "2010-12-31 12:00:00" --variable zeu  --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "zeu_1998_2020.nc" --user "USERNAME" --pwd "PASSWORD"
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_BGC_001_033-TDS --product-id cmems_mod_glo_bgc_my_0.083deg-lmtl_PT1D-i --longitude-min -86 --longitude-max -69 --latitude-min -1 --latitude-max 17  --date-min "2011-01-01 12:00:00" --date-max "2020-05-31 12:00:00" --variable zeu  --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "zeu_2011_2020.nc" --user "USERNAME" --pwd "PASSWORD"
-
-#Sea floor potential temperature  sea_water_potential_temperature_at_sea_floor  degrees_C
-#bottomT
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_PHY_001_030-TDS --product-id cmems_mod_glo_phy_my_0.083_P1M-m --longitude-min -86 --longitude-max -69 --latitude-min -1 --latitude-max 17  --date-min "1998-01-01 12:00:00" --date-max "2020-05-31 12:00:00" --depth-min 0.494 --depth-max 10 --variable bottomT --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "bottomT_1998_2020.nc"  --user "USERNAME" --pwd "PASSWORD"
-
-#Density ocean mixed layer thickness ocean_mixed_layer_thickness_defined_by_sigma_theta m
-#zos
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_PHY_001_030-TDS --product-id cmems_mod_glo_phy_my_0.083_P1M-m --longitude-min -86 --longitude-max -69 --latitude-min -1 --latitude-max 17  --date-min "1998-01-01 12:00:00" --date-max "2020-05-31 12:00:00" --depth-min 0.494 --depth-max 10 --variable zos --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "zos_1998_2020.nc"  --user "USERNAME" --pwd "PASSWORD"
-
-#Sea surface height sea_surface_height_above_geoid m
-#mlotst
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_PHY_001_030-TDS --product-id cmems_mod_glo_phy_my_0.083_P1M-m --longitude-min -86 --longitude-max -69 --latitude-min -1 --latitude-max 17  --date-min "1998-01-01 12:00:00" --date-max "2020-05-31 12:00:00" --depth-min 0.494 --depth-max 10 --variable mlotst --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "mlotst_1998_2020.nc"  --user "USERNAME" --pwd "PASSWORD"
-
-#Temperature sea_water_potential_temperature  degrees_C
-#thetao
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_PHY_001_030-TDS --product-id cmems_mod_glo_phy_my_0.083_P1M-m --longitude-min -86 --longitude-max -69 --latitude-min -1 --latitude-max 17  --date-min "1998-01-01 12:00:00" --date-max "2020-05-31 12:00:00" --depth-min 0.494 --depth-max 270 --variable thetao --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "thetao_1998_2020.nc"  --user "USERNAME" --pwd "PASSWORD"
-
-#Salinity sea_water_salinity 1e-3
-#so
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_PHY_001_030-TDS  --product-id cmems_mod_glo_phy_my_0.083_P1M-m --longitude-min -86  --longitude-max -69 --latitude-min 1 --latitude-max 17 --date-min "1998-01-16 12:00:00" --date-max "2020-05-31 12:00:00" --depth-min 0.494 --depth-max 270 --variable so --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "so_1998_2020.nc"  --user "USERNAME" --pwd "PASSWORD"
-
-#eastward_sea_water_velocity m s-1 
-#uo
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_PHY_001_030-TDS --product-id cmems_mod_glo_phy_my_0.083_P1M-m --longitude-min -86 --longitude-max -69 --latitude-min -1 --latitude-max 17  --date-min "1998-01-01 12:00:00" --date-max "2020-05-31 12:00:00" --depth-min 0.494 --depth-max 270 --variable uo --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "uo_1998_2020.nc"  --user "USERNAME" --pwd "PASSWORD"
-
-#northward_sea_water_velocity m s-1
-#vo
-python -m motuclient --motu https://my.cmems-du.eu/motu-web/Motu --service-id GLOBAL_MULTIYEAR_PHY_001_030-TDS --product-id cmems_mod_glo_phy_my_0.083_P1M-m --longitude-min -86 --longitude-max -69 --latitude-min -1 --latitude-max 17  --date-min "1998-01-01 12:00:00" --date-max "2020-05-31 12:00:00" --depth-min 0.494 --depth-max 270 --variable vo --out-dir "..\Cetacean_Tourist_Vessel_Collision_Risk_Assessment\02_Predictors\01_NetCDF\01_Download" --out-name "vo_1998_2020.nc"  --user "USERNAME" --pwd "PASSWORD"
-
-```
 ## Data Processing
 
+### Topographic predictors
 
-To develop the slope data layer from the bathymetry layer of GEBCO, we used the tool "Slope" from the spatial analyst extension of the ESRI's ArcGIS® program (v. 10.6; @ESRI2017) and to obtain the distances derived layers like the "Distances to the coast", we used the "Euclidean Distance" tool from the spatial analyst extension of ESRI's ArcGIS® program (v. 10.6; @ESRI2017).
+The GEBCO bathymetry data were used to obtain a bathymetric layer of the study area, this was cut to the boundaries of this area with the "Extract by Mask" tool of the Spatial Analyst extension of the ESRI ArcGIS® program (v. 10.6; @ESRI2017). To obtain the derived slope topographic layer from the GEBCO data, the "Slope" tool of the Spatial Analyst extension of the ESRI ArcGIS®(v. 10.8.1; @ESRI2017) program was used. 
+
+To obtain the layers based on distance to the main geomorphological features, such as "Distance to coast" or "Distance to continental shelf", the "Euclidean Distance" tool of the Spatial Analyst extension of ESRI's ArcGIS® software (v. 10.8.1; @ESRI2017) was used. To obtain these layers and calculate the distances in a proper way and decreasing the calculation errors, first the original projection of the geographic coordinate data (WGS84) was transformed to planar coordinates with the projection Robinson coordinate system using the "Project" tool of the Data Management Tools extension of ESRI's ArcGIS®(v. 10.8.1; @ESRI2017). Once the distance layer was obtained, it was re-projected to geographic coordinates (WGS84) to match the projection of the rest of the data (e.g. Biodiversity and Dynamic data).
+
+*Information about the Robinson Projection used with ESRI's ArcGIS®*
+
+```
+World_Robinson
+WKID: 54030 Authority: Esri
+
+Projection: Robinson
+False_Easting: 0.0
+False_Northing: 0.0
+Central_Meridian: 0.0
+Linear Unit: Meter (1.0)
+
+Geographic Coordinate System: GCS_WGS_1984
+Angular Unit: Degree (0.0174532925199433)
+Prime Meridian: Greenwich (0.0)
+Datum: D_WGS_1984
+  Spheroid: WGS_1984
+    Semimajor Axis: 6378137.0
+    Semiminor Axis: 6356752.314245179
+    Inverse Flattening: 298.257223563
+
+```
+### Dynamic predictors
+
+For the dynamic layers, the choice of variables was based on the general ecology of cetacean species, taking into account the sensory scale that these species may present in the chosen study area. We relied on the work of @Torres2017 to determine which variables could be part of the modeling according to the distance at which cetacean species, both dolphins and whales, could sense the environment. For both dolphins and whales, the variables that can be sensed by these species at a distance of more than 10 km (minimum area at which the resolution of the geographic layers is presented) are those that stimulate somatosensory perception and chemoreception [@Torres2017]. 
+
+To obtain the dynamic predictor layers, we used data for nine variables obtained from the **Copernicus Marine Service Information: Global Ocean Physics Reanalysis Glorys 12V1 (PHYS 001-030)** from two datasets. **cmems_mod_glo_bgc_my_0.083deg-lmtl_PT1D-i** and **cmems_mod_glo_phy_my_0.083_P1M-m**. The temporal resolution of the data was monthly with a time window from 1993-01-01 to 2020-05-31. The spatial resolution of the data was 8.5 km (0.085°) and data were extracted not only at the surface but also at depths up to 200 meters, trying to cover the entire epipelagic layer of the ocean where dolphin and whale species have the greatest foraging activity [@Coram2021].
+
+The variables selected were as follows:
+
+1. Mass content of epipelagic micronekton expressed as wet weight in sea water (mnkc_epi [g/m2])
+2. Euphotic zone depth (zeu [m])
+3. Sea water potential temperature at sea floor (bottomT [°C])
+4. Sea surface height above geoid (zos [m])
+5. Ocean mixed layer thickness defined by sigma theta (mlotst [m])
+6. Sea water potential temperature (thetao [°C])
+7. Sea water salinity (so [10-3])
+8. Eastward sea water velocity (uo [m/s])
+9. Northward sea water velocity (vo [m/s])
 
 
-To develop the layers from the dynamic data, we used data from 1993-01-01 to 2020-05-31 with 8.5 km spatial resolution and depth of 200 meters from the E.U. *Copernicus Marine Service Information: Global Ocean Physics Reanalysis Glorys 12V1 (PHYS 001-030)* 
 
-
-After this, all environmental raster layers were processed in the R program [@RTeam2008] using the "*raster*" package (v.3.4-10; @Hijmans2020). In order to avoid area calculation errors [@Sillero2021], all layers were projected to the Robinson coordinate system, maintaining the same spatial extent (north: 1885709.906800 m, south: -1595010.207100 m, east: -5625484.156700 m, west: -8664897.024700 m) and the same grid resolution (8.5 km).
+Once these data were downloaded in NetCDF format, they were all processed with the linux program **Climate Data Operator - CDO** to obtain the mean and standard deviation in time and depth of all variables in the study area. To calculate the magnitude of the currents, it was derived from the Eastward sea water velocity and the Northward sea water velocity with the following equation: $|v| = \sqrt{(uo)^2 + (vo)^2}$
+ 
+ 
+After this, all environmental raster layers were processed in the R program [@RTeam2008] using the "*raster*" package (v.3.4-10; [@Hijmans2020]). In order to avoid area calculation errors [@Sillero2021], all layers were projected to the Robinson coordinate system, maintaining the same spatial extent (north: 1885709.906800 m, south: -1595010.207100 m, east: -5625484.156700 m, west: -8664897.024700 m) and the same grid resolution (8.5 km).
 
 
 
