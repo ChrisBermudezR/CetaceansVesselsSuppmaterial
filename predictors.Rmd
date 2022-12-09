@@ -65,29 +65,28 @@ The variables selected were as follows:
 
 
 
-Once these data were downloaded in NetCDF format, they were all processed with the linux program **Climate Data Operator - CDO** to obtain the mean and standard deviation in time and depth of all variables in the study area. To calculate the magnitude of the currents, it was derived from the Eastward sea water velocity and the Northward sea water velocity with the following equation: $|v| = \sqrt{(uo)^2 + (vo)^2}$
- 
- 
-After this, all environmental raster layers were processed in the R program [@RTeam2008] using the "*raster*" package (v.3.4-10; [@Hijmans2020]). In order to avoid area calculation errors [@Sillero2021], all layers were projected to the Robinson coordinate system, maintaining the same spatial extent (north: 1885709.906800 m, south: -1595010.207100 m, east: -5625484.156700 m, west: -8664897.024700 m) and the same grid resolution (8.5 km).
+Once these data were downloaded in NetCDF format all calculations to obtain the mean and standard deviation, in time and depth of all predictors in the study area, were processed with a [script](https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_NetCDF/02_NetCDF_Processing.sh) based on the UNIX shell with the program **Climate Data Operator - CDO** through the Windows Subsystem Linux  (WSL version 2) with the Ubuntu 20.04 LTS distro. To calculate the magnitude of the currents, it was obtained from the eastward seawater velocity (uo [m/s]) and the northward seawater velocity (vo [m/s]) with the following equation: $|v| = \sqrt{(uo)^2 + (vo)^2}$. 
 
+
+Once all the calculations for each variable are done, usually the raster grids are never aligned, because of this it is possible that the model execution cannot be carried out. Therefore, we developed a [script](https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_Predictors_Alignment.R) in the R program [@RTeam2008] using the "*raster*" package (v.3.4-10; @Hijmans2020), to ensure the total alignment of all the grids of the raster layers and also to ensure that all these layers have the same extent, all this without losing the original values. 
 
 
 ## Selection of Environmental predictors
 
 
 
+To avoid over-fitting models, variable selection was performed using a heuristic approach [@Cobos2019]. For this, a pairwise Spearman correlation matrix was first constructed to detect statistical correlation between the environmental predictors used in the habitat suitability models. Because two of the selected cetacean species and one subspecies only occur in one of the two ocean basins within the Colombian EEZ, it was necessary to perform this analysis on two datasets, each with layers representing only the Caribbean and Pacific, respectively. This analysis was performed using the "*corrplot*" package of the R program (v.0.84; @Wei2017). A posteriori and using all previously uncorrelated environmental predictors, several runs for predictor testing were performed using the Maximum Entropy algorithm [MaxEnt; @Elith2011; @Gomes2018; @Phillips2006] with the default settings (*e.g.*, randomly generated background, no cross-validation for replicates) to identify predictors contributing most to each species/subspecies model based on significance value greater than 0.05. MaxEnt allows discriminating between predictors for each species, as its analysis is based on background data to build habitat suitability models [@Hirzel2002], finding the environmental conditions with the maximum entropy at recorded species sighting points using a log-linear model [@Merow2013; @Merow2014].
+
+Finally, environmental predictors with a significance value lower than 0.05 were excluded, so the remaining predictors were selected to perform habitat suitability modeling based on previous studies, the ecology of each cetacean species/subspecies and their natural history (Table 1) [@Redfern2017].
+
+In addition, and based on the hypothesis that marine features In addition, and based on the hypothesis that marine features and dynamic oceanographic conditions influence the distribution of marine cetaceans, we selected environmental predictors that remained within the boundaries of the meso- and macro-scales of sense of dolphins and baleen whales (10 km to 1,000 km distance) [@Torres2017].
 
 
 
 
+*** Translated with www.DeepL.com/Translator (free version) ***
 
 
-
- (Supplementary Figure 1).\
-
-To prevent overfitted models, the variables' selection was conducted using a heuristic approach [@Cobos2019]. For this, a pairwise Spearman's correlation matrix was built first to detect a statistical correlation between environmental predictors used in the habitat suitability models. Because two of the selected cetacean species and one subspecies only occur in one of the two ocean basins within Colombian EEZ, it was necessary to perform this analysis on two data sets, each one with layers that represented only the Caribbean and the Pacific, respectively. This analysis was performed using the "*corrplot*" package in the R program (v.0.84; @Wei2017). Posteriorly and using all previously uncorrelated environmental predictors, several runs for predictors testing were made using the Maximum Entropy algorithm [MaxEnt; @Elith2011; @Gomes2018; @Phillips2006] with the default settings (*e.g.*, randomly generated background, non cross-validation for replicates) to identify the most contributing predictors to each species/subspecies model based on the importance value higher than 0.05. MaxEnt allows discriminating among predictors for each species, since its analysis is based on background data to build habitat suitability models [@Hirzel2002], finding the environmental conditions with the maximum entropy at recorded species sightings spots using a log-linear model [@Merow2013; @Merow2014].
-Finally, environmental predictors with an importance value less than 0.05 were excluded, so remaining predictors were selected to conduct habitat suitability models based on previous studies, each cetaceans' species/subspecies ecology, and their natural history (Table 1) [@Redfern2017].
-Furthermore, and starting from the hypothesis that seabed features and dynamic oceanographic conditions influence the distribution of marine cetaceans, we selected environmental predictors that remained within the dolphins and baleen whales limits of meso and macro scales-of-sense (from 10 km to 1,000 km in distance) [@Torres2017].
 
 
 # REFERENCES
