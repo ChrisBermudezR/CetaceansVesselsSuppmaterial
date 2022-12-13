@@ -85,18 +85,26 @@ knitr::include_graphics('Dynamic_Predictors.png')
 
 ## Selection of Environmental predictors
 
-The selection of environmental predictors was carried out after discarding any correlations  
+Because some of the cetacean species or subspecies considered in this study are only distributed in one of the two ocean basins of Colombia, the predictor layers were divided into two representative sets for each basin. After this division, the environmental predictor layers were subjected to a Pearson correlation test (*r*) to rule out any covariation. This test was performed using the "layerstats" tool with the "raster" package [@Hijmans2020] of the R program, all available in this [script](https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_Predictors_Alignment.R). The pairs of layers that were correlated with more than an *r* of 0.8, only one of them was selected to be used in the model run. 
 
-To avoid over-fitting models, variable selection was performed using a heuristic approach [@Cobos2019]. For this, a pairwise Spearman correlation matrix was first constructed to detect statistical correlation between the environmental predictors used in the habitat suitability models. Because two of the selected cetacean species and one subspecies only occur in one of the two ocean basins within the Colombian EEZ, it was necessary to perform this analysis on two datasets, each with layers representing only the Caribbean and Pacific, respectively. This analysis was performed using the "*corrplot*" package of the R program (v.0.84; @Wei2017). A posteriori and using all previously uncorrelated environmental predictors, several runs for predictor testing were performed using the Maximum Entropy algorithm [MaxEnt; @Elith2011; @Gomes2018; @Phillips2006] with the default settings (*e.g.*, randomly generated background, no cross-validation for replicates) to identify predictors contributing most to each species/subspecies model based on significance value greater than 0.05. MaxEnt allows discriminating between predictors for each species, as its analysis is based on background data to build habitat suitability models [@Hirzel2002], finding the environmental conditions with the maximum entropy at recorded species sighting points using a log-linear model [@Merow2013; @Merow2014].
+For the Caribbean basin, of the 22 predictors considered, five were detected that presented correlations with other predictors with an *r* > 0.75. Bathymetry and distance to the continental shelf had a very strong negative correlation (*r* > -085) and the standard deviation of Sea water potential temperature had a strong negative correlation (*r* > -085) with the mean Sea water potential temperature, and also with the standard deviation (*r* > -0.82) and mean (*r* > -0.92) of Sea water potential temperature at sea floor. The mean Sea water potential temperature at sea floor also showed a very strong correlation with the mean Sea water potential temperature (*r* > 0.82) (Supplementary Figure XXX).
+
+Only bathymetry and standard deviation of Sea water potential temperature were chosen as the final uncorrelated predictors to be used in the model because they can be used as proxies for the other correlated variables. 
+
+ 
+
+```{r, out.width='110%', fig.align='center', fig.cap='Supplementary Figure XXX. Pearson correlation matrix of the 22 environmental predictors used to conduct the habitat suitability models in the Colombian Caribbean basin for *Stenella attenuata attenuata* (Caribbean occurrences), *S. frontalis* (Caribbean occurrences), *S. longirostris longirostris* (Caribbean occurrences) and *Tursiops truncatus* (Caribbean occurrences).', echo=FALSE}
+knitr::include_graphics('corr_Matrix_Caribbean.png')
+```
+
+ 
+For the Pacific basin, of the 22 predictors considered, 10 were detected that presented correlations with other predictors with an r > 0.75 (Supplementary Figure XXX). 
 
 Finally, environmental predictors with a significance value lower than 0.05 were excluded, so the remaining predictors were selected to perform habitat suitability modeling based on previous studies, the ecology of each cetacean species/subspecies and their natural history (Table 1) [@Redfern2017].
 
-In addition, and based on the hypothesis that marine features In addition, and based on the hypothesis that marine features and dynamic oceanographic conditions influence the distribution of marine cetaceans, we selected environmental predictors that remained within the boundaries of the meso- and macro-scales of sense of dolphins and baleen whales (10 km to 1,000 km distance) [@Torres2017].
+In addition, and based on the hypothesis that marine features and dynamic oceanographic conditions influence the distribution of marine cetaceans, we selected environmental predictors that remained within the boundaries of the meso- and macro-scales of sense of dolphins and baleen whales (10 km to 1,000 km distance) [@Torres2017].
 
 
-
-
-*** Translated with www.DeepL.com/Translator (free version) ***
 
 
 

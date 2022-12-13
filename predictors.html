@@ -286,7 +286,7 @@ $(document).ready(function () {
   <a href="tra.html">Tourism Route Analysis</a>
 </li>
 <li>
-  <a href="survey.html">Suvey Analysis</a>
+  <a href="survey.html">Survey Analysis</a>
 </li>
 <li>
   <a href="oa.html">Overlapping Analysis</a>
@@ -455,86 +455,73 @@ Figure XXX. Dynamic Enviromental Predictors.
 </div>
 <div id="selection-of-environmental-predictors" class="section level2">
 <h2>Selection of Environmental predictors</h2>
-<p>The selection of environmental predictors was carried out after
-discarding any correlations</p>
-<p>To avoid over-fitting models, variable selection was performed using
-a heuristic approach <span class="citation">(<a href="#ref-Cobos2019"
-role="doc-biblioref">Cobos et al. 2019</a>)</span>. For this, a pairwise
-Spearman correlation matrix was first constructed to detect statistical
-correlation between the environmental predictors used in the habitat
-suitability models. Because two of the selected cetacean species and one
-subspecies only occur in one of the two ocean basins within the
-Colombian EEZ, it was necessary to perform this analysis on two
-datasets, each with layers representing only the Caribbean and Pacific,
-respectively. This analysis was performed using the “<em>corrplot</em>”
-package of the R program (v.0.84; <span class="citation">Wei and Simko
-(<a href="#ref-Wei2017" role="doc-biblioref">2017</a>)</span>). A
-posteriori and using all previously uncorrelated environmental
-predictors, several runs for predictor testing were performed using the
-Maximum Entropy algorithm [MaxEnt; <span class="citation">Elith et al.
-(<a href="#ref-Elith2011" role="doc-biblioref">2011</a>)</span>; <span
-class="citation">Gomes et al. (<a href="#ref-Gomes2018"
-role="doc-biblioref">2018</a>)</span>; <span class="citation">Phillips
-et al. (<a href="#ref-Phillips2006"
-role="doc-biblioref">2006</a>)</span>] with the default settings
-(<em>e.g.</em>, randomly generated background, no cross-validation for
-replicates) to identify predictors contributing most to each
-species/subspecies model based on significance value greater than 0.05.
-MaxEnt allows discriminating between predictors for each species, as its
-analysis is based on background data to build habitat suitability models
-<span class="citation">(<a href="#ref-Hirzel2002"
-role="doc-biblioref">Hirzel et al. 2002</a>)</span>, finding the
-environmental conditions with the maximum entropy at recorded species
-sighting points using a log-linear model <span class="citation">(<a
-href="#ref-Merow2013" role="doc-biblioref">Merow et al. 2013</a>; <a
-href="#ref-Merow2014" role="doc-biblioref">Merow and Silander
-2014</a>)</span>.</p>
+<p>Because some of the cetacean species or subspecies considered in this
+study are only distributed in one of the two ocean basins of Colombia,
+the predictor layers were divided into two representative sets for each
+basin. After this division, the environmental predictor layers were
+subjected to a Pearson correlation test (<em>r</em>) to rule out any
+covariation. This test was performed using the “layerstats” tool with
+the “raster” package <span class="citation">(<a href="#ref-Hijmans2020"
+role="doc-biblioref">Hijmans et al. 2020</a>)</span> of the R program,
+all available in this <a
+href="https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_Predictors_Alignment.R">script</a>.
+The pairs of layers that were correlated with more than an <em>r</em> of
+0.8, only one of them was selected to be used in the model run.</p>
+<p>For the Caribbean basin, of the 22 predictors considered, five were
+detected that presented correlations with other predictors with an
+<em>r</em> &gt; 0.75. Bathymetry and distance to the continental shelf
+had a very strong negative correlation (<em>r</em> &gt; -085) and the
+standard deviation of Sea water potential temperature had a strong
+negative correlation (<em>r</em> &gt; -085) with the mean Sea water
+potential temperature, and also with the standard deviation (<em>r</em>
+&gt; -0.82) and mean (<em>r</em> &gt; -0.92) of Sea water potential
+temperature at sea floor. The mean Sea water potential temperature at
+sea floor also showed a very strong correlation with the mean Sea water
+potential temperature (<em>r</em> &gt; 0.82) (Supplementary Figure
+XXX).</p>
+<p>Only bathymetry and standard deviation of Sea water potential
+temperature were chosen as the final uncorrelated predictors to be used
+in the model because they can be used as proxies for the other
+correlated variables.</p>
+<div class="figure" style="text-align: center">
+<img src="corr_Matrix_Caribbean.png" alt="Supplementary Figure XXX. Pearson correlation matrix of the 22 environmental predictors used to conduct the habitat suitability models in the Colombian Caribbean basin for *Stenella attenuata attenuata* (Caribbean occurrences), *S. frontalis* (Caribbean occurrences), *S. longirostris longirostris* (Caribbean occurrences) and *Tursiops truncatus* (Caribbean occurrences)." width="110%" />
+<p class="caption">
+Supplementary Figure XXX. Pearson correlation matrix of the 22
+environmental predictors used to conduct the habitat suitability models
+in the Colombian Caribbean basin for <em>Stenella attenuata
+attenuata</em> (Caribbean occurrences), <em>S. frontalis</em> (Caribbean
+occurrences), <em>S. longirostris longirostris</em> (Caribbean
+occurrences) and <em>Tursiops truncatus</em> (Caribbean occurrences).
+</p>
+</div>
+<p>For the Pacific basin, of the 22 predictors considered, 10 were
+detected that presented correlations with other predictors with an r
+&gt; 0.75 (Supplementary Figure XXX).</p>
 <p>Finally, environmental predictors with a significance value lower
 than 0.05 were excluded, so the remaining predictors were selected to
 perform habitat suitability modeling based on previous studies, the
 ecology of each cetacean species/subspecies and their natural history
 (Table 1) <span class="citation">(<a href="#ref-Redfern2017"
 role="doc-biblioref">Redfern et al. 2017</a>)</span>.</p>
-<p>In addition, and based on the hypothesis that marine features In
-addition, and based on the hypothesis that marine features and dynamic
-oceanographic conditions influence the distribution of marine cetaceans,
-we selected environmental predictors that remained within the boundaries
-of the meso- and macro-scales of sense of dolphins and baleen whales (10
-km to 1,000 km distance) <span class="citation">(<a
+<p>In addition, and based on the hypothesis that marine features and
+dynamic oceanographic conditions influence the distribution of marine
+cetaceans, we selected environmental predictors that remained within the
+boundaries of the meso- and macro-scales of sense of dolphins and baleen
+whales (10 km to 1,000 km distance) <span class="citation">(<a
 href="#ref-Torres2017" role="doc-biblioref">Torres 2017</a>)</span>.</p>
-<p>*** Translated with www.DeepL.com/Translator (free version) ***</p>
 </div>
 <div id="references" class="section level1">
 <h1>REFERENCES</h1>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-Cobos2019" class="csl-entry">
-Cobos ME, Peterson AT, Osorio-Olvera L, Jiménez-García D (2019) <span
-class="nocase">An exhaustive analysis of heuristic methods for variable
-selection in ecological niche modeling and species distribution
-modeling</span>. Ecological Informatics 53:100983. <a
-href="https://doi.org/10.1016/j.ecoinf.2019.100983">https://doi.org/10.1016/j.ecoinf.2019.100983</a>
-</div>
 <div id="ref-Coram2021" class="csl-entry">
 Coram A, Abreo NAS, Ellis RP, Thompson KF (2021) Contribution of social
 media to cetacean research in southeast asia: Illuminating populations
 vulnerable to litter. Biodiversity and Conservation 30:2341–2359. <a
 href="https://doi.org//10.1007/s10531-021-02196-6">https://doi.org//10.1007/s10531-021-02196-6</a>
 </div>
-<div id="ref-Elith2011" class="csl-entry">
-Elith J, Phillips SJ, Hastie T, et al (2011) <span class="nocase">A
-statistical explanation of MaxEnt for ecologists</span>. Diversity and
-Distributions 17:43–57. <a
-href="https://doi.org/10.1111/j.1472-4642.2010.00725.x">https://doi.org/10.1111/j.1472-4642.2010.00725.x</a>
-</div>
 <div id="ref-ESRI2017" class="csl-entry">
 ESRI (2017) <span>ArcGIS Desktop: Release 10. Environmental Systems
 Research Institute. Redlands, CA.</span>
-</div>
-<div id="ref-Gomes2018" class="csl-entry">
-Gomes VHF, Ijff SD, Raes N, et al (2018) <span class="nocase">Species
-Distribution Modelling: Contrasting presence-only models with plot
-abundance data</span>. Scientific Reports 8:1–12. <a
-href="https://doi.org/10.1038/s41598-017-18927-1">https://doi.org/10.1038/s41598-017-18927-1</a>
 </div>
 <div id="ref-Harris2014" class="csl-entry">
 Harris PT, Macmillan-Lawler M, Rupp J, Baker EK (2014) <span
@@ -546,29 +533,6 @@ href="https://doi.org/10.1016/j.margeo.2014.01.011">https://doi.org/10.1016/j.ma
 Hijmans RJ, Van Etten J, Cheng J, et al (2020) <span
 class="nocase">raster: Geographic Data Analysis and Modeling.R package
 version 3.3</span>
-</div>
-<div id="ref-Hirzel2002" class="csl-entry">
-Hirzel AH, Hausser J, Chessel D, Perrin N (2002) <span
-class="nocase">Ecological-niche factor analysis: how to compute
-habitat-suitability maps without absence data?</span> Ecology
-83:2027–2036
-</div>
-<div id="ref-Merow2014" class="csl-entry">
-Merow C, Silander JA (2014) <span class="nocase">A comparison of Maxlike
-and Maxent for modelling species distributions.</span> Methods in
-Ecology and Evolution 5:215–255
-</div>
-<div id="ref-Merow2013" class="csl-entry">
-Merow C, Smith MJ, Silander Ja (2013) <span class="nocase">A practical
-guide to MaxEnt for modeling species’ distributions: what it does, and
-why inputs and settings matter</span>. Ecography 36:1058–1069. <a
-href="https://doi.org/10.1111/j.1600-0587.2013.07872.x">https://doi.org/10.1111/j.1600-0587.2013.07872.x</a>
-</div>
-<div id="ref-Phillips2006" class="csl-entry">
-Phillips SJ, Anderson RP, Schapire RE (2006) <span
-class="nocase">Maximum entropy modeling of species geographic
-distributions</span>. Ecological Modelling 190:231–259. <a
-href="https://doi.org/10.1016/j.ecolmodel.2005.03.026">https://doi.org/10.1016/j.ecolmodel.2005.03.026</a>
 </div>
 <div id="ref-RTeam2008" class="csl-entry">
 R Development Core Team (2008) <span class="nocase">R A language and
@@ -587,11 +551,6 @@ Torres LG (2017) <span class="nocase">A sense of scale: Foraging
 cetaceans’ use of scale-dependent multimodal sensory systems</span>.
 Marine Mammal Science 33:1170–1193. <a
 href="https://doi.org/10.1111/mms.12426">https://doi.org/10.1111/mms.12426</a>
-</div>
-<div id="ref-Wei2017" class="csl-entry">
-Wei T, Simko Vi (2017) <span class="nocase">R package
-<span>“corrplot”</span>: Visualization of a Correlation Matrix (Version
-0.84)</span>
 </div>
 </div>
 <div style="page-break-after: always;"></div>

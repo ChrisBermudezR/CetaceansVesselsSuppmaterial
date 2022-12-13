@@ -15,10 +15,12 @@ navbar:
     href: hsm.html
   - text: "Tourism Route Analysis"
     href: tra.html
-  - text: "Suvey Analysis"
+  - text: "Survey Analysis"
     href: survey.html
   - text: "Overlapping Analysis"
     href: oa.html
+
+    
     
     
 output:
