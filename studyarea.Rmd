@@ -12,9 +12,10 @@ Both Caribbean and Pacific areas are influenced by tourism-vessel activities in 
 In the Caribbean, water tourism has been focused mainly on cruise ships and diving activities while in the Pacific tourist vessel traffic is principally for nature activities such as diving and whale-watching onboard pleasure vessels and small boats, respectively [@AguileraDiaz2006; @Brida2012; @Sanchez2010; @Trujillo2013 ]. These differences are based on tourist infrastructure, which is highly developed in the Colombian Caribbean in contrast to the Pacific region. Along the 1,600 km of the Colombian Caribbean coastline are located tourist cities such as Cartagena de Indias, which has a greater hotel development [@AguileraDiaz2006; @Brida2012; @SanchezFernandez2010]. Conversely, the Pacific holds more pristine areas, being the ecotourism and the whale-watching activities predominant, because the Colombian Pacific is highly biodiverse and is part of the breeding zone for stock G humpback whales [@Acevedo2017; @AguayoLobo2011; @Fagua2019; @FlorezGonzalez2007; @Sanchez2010; @Trujillo2013].
 
 
+```{r, out.width='75%', fig.align='center', fig.cap='Figure 1. Study area with the location of marine protected areas and main ports in the Colombian Exclusive Economic Zone (EEZ).', echo=FALSE}
+knitr::include_graphics('Figure_01.png')
+```
 
-
-![Figure 1. Study area with the location of marine protected areas and main ports in the Colombian Exclusive Economic Zone (EEZ).](Figure_01.png)
 
 
 # REFERENCES

@@ -45,6 +45,13 @@ Datum: D_WGS_1984
     Inverse Flattening: 298.257223563
 
 ```
+```{r, out.width='55%', fig.align='center', fig.cap='Figure XXX. Topographic Enviromental Predictors', echo=FALSE}
+knitr::include_graphics('Topographic_Predictors.png')
+```
+
+
+
+
 ### Dynamic predictors
 
 For the dynamic layers, the choice of variables was based on the general ecology of cetacean species, taking into account the sensory scale that these species may present in the chosen study area. We relied on the work of @Torres2017 to determine which variables could be part of the modeling according to the distance at which cetacean species, both dolphins and whales, could sense the environment. For both dolphins and whales, the variables that can be sensed by these species at a distance of more than 10 km (minimum area at which the resolution of the geographic layers is presented) are those that stimulate somatosensory perception and chemoreception [@Torres2017]. 
@@ -70,10 +77,15 @@ Once these data were downloaded in NetCDF format all calculations to obtain the 
 
 Once all the calculations for each variable are done, usually the raster grids are never aligned, because of this it is possible that the model execution cannot be carried out. Therefore, we developed a [script](https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_Predictors_Alignment.R) in the R program [@RTeam2008] using the "*raster*" package (v.3.4-10; @Hijmans2020), to ensure the total alignment of all the grids of the raster layers and also to ensure that all these layers have the same extent, all this without losing the original values. 
 
+```{r, out.width='110%', fig.align='center', fig.cap='Figure XXX. Dynamic Enviromental Predictors.', echo=FALSE}
+knitr::include_graphics('Dynamic_Predictors.png')
+```
+
+
 
 ## Selection of Environmental predictors
 
-
+The selection of environmental predictors was carried out after discarding any correlations  
 
 To avoid over-fitting models, variable selection was performed using a heuristic approach [@Cobos2019]. For this, a pairwise Spearman correlation matrix was first constructed to detect statistical correlation between the environmental predictors used in the habitat suitability models. Because two of the selected cetacean species and one subspecies only occur in one of the two ocean basins within the Colombian EEZ, it was necessary to perform this analysis on two datasets, each with layers representing only the Caribbean and Pacific, respectively. This analysis was performed using the "*corrplot*" package of the R program (v.0.84; @Wei2017). A posteriori and using all previously uncorrelated environmental predictors, several runs for predictor testing were performed using the Maximum Entropy algorithm [MaxEnt; @Elith2011; @Gomes2018; @Phillips2006] with the default settings (*e.g.*, randomly generated background, no cross-validation for replicates) to identify predictors contributing most to each species/subspecies model based on significance value greater than 0.05. MaxEnt allows discriminating between predictors for each species, as its analysis is based on background data to build habitat suitability models [@Hirzel2002], finding the environmental conditions with the maximum entropy at recorded species sighting points using a log-linear model [@Merow2013; @Merow2014].
 
