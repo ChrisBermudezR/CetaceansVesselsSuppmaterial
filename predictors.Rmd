@@ -87,9 +87,9 @@ knitr::include_graphics('Dynamic_Predictors.png')
 
 Because some of the cetacean species or subspecies considered in this study are only distributed in one of the two ocean basins of Colombia, the predictor layers were divided into two representative sets for each basin. After this division, the environmental predictor layers were subjected to a Pearson correlation test (*r*) to rule out any covariation. This test was performed using the "layerstats" tool with the "raster" package [@Hijmans2020] of the R program, all available in this [script](https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_Predictors_Alignment.R). The pairs of layers that were correlated with more than an *r* of 0.8, only one of them was selected to be used in the model run. 
 
-For the Caribbean basin, of the 22 predictors considered, five were detected that presented correlations with other predictors with an *r* > 0.75. Bathymetry and distance to the continental shelf had a very strong negative correlation (*r* > -085) and the standard deviation of Sea water potential temperature had a strong negative correlation (*r* > -085) with the mean Sea water potential temperature, and also with the standard deviation (*r* > -0.82) and mean (*r* > -0.92) of Sea water potential temperature at sea floor. The mean Sea water potential temperature at sea floor also showed a very strong correlation with the mean Sea water potential temperature (*r* > 0.82) (Supplementary Figure XXX).
+For the Caribbean basin, of the 22 predictors considered, five were detected that presented correlations with other predictors with an *r* > 0.75. Bathymetry and distance to the continental shelf had a very strong negative correlation (*r* = -085) and the standard deviation of sea water potential temperature had a strong negative correlation (*r* = -085) with the mean sea water potential temperature, and also with the standard deviation (*r*= -0.82) and mean (*r* = -0.92) of sea water potential temperature at sea floor. The mean sea water potential temperature at sea floor also showed a very strong correlation with the mean sea water potential temperature (*r* = 0.82) (Supplementary Figure XXX).
 
-Only bathymetry and standard deviation of Sea water potential temperature were chosen as the final uncorrelated predictors to be used in the model because they can be used as proxies for the other correlated variables. 
+Only bathymetry and standard deviation of sea water potential temperature were chosen as the final uncorrelated predictors to be used in the model because they can be used as proxies for the other correlated variables. 
 
  
 
@@ -98,15 +98,20 @@ knitr::include_graphics('corr_Matrix_Caribbean.png')
 ```
 
  
-For the Pacific basin, of the 22 predictors considered, 10 were detected that presented correlations with other predictors with an r > 0.75 (Supplementary Figure XXX). 
+For the Pacific basin, of the 22 predictors considered, 13 were found to have correlations with other predictors with r > 0.75 (Supplementary Figure XXX). The mean sea water potential temperature at sea floor presented three strong positive correlations with bathymetry (*r* = 0.76), the standard deviation of sea water potential temperature at sea floor (*r* = 0.90), and the mean sea water potential temperature (*r* = 0.87). Only the standard deviation of the sea water potential temperature (*r* = -0.85) and the mean sea water salinity (*r* = -0.75) presented a strong negative correlation with this predictor.
 
-Finally, environmental predictors with a significance value lower than 0.05 were excluded, so the remaining predictors were selected to perform habitat suitability modeling based on previous studies, the ecology of each cetacean species/subspecies and their natural history (Table 1) [@Redfern2017].
+The distance to the continental shelf presented a strong negative correlation with the mean and standard deviation of the mass content of epipelagic micronekton (*r* = -0.81 and *r* = -0.76 respectively) and a strong positive correlation with the distance to the trenches (*r* = 0.76).  The mean and standard deviation of the ocean mixed layer thickness showed a very strong positive correlation with each other (*r* = 0.97) and the mean sea water potential temperature showed a strong negative correlation (*r* = -0.86) with the mean sea water potential temperature.
+
+
+
+
+```{r, out.width='110%', fig.align='center', fig.cap='Supplementary Figure XXX. Pearson correlation matrix of the 22 environmental predictors used to conduct the habitat suitability models in the Colombian Caribbean basin for *Megaptera novaeangliae*, *Stenella attenuata attenuata* (Pacific occurrences), *S. attenuata graffmani*, *S. longirostris centroamericana*, *S. longirostris orientalis*  and *Tursiops truncatus* (Pacific occurrences).', echo=FALSE}
+knitr::include_graphics('corr_Matrix_Pacific.png')
+```
+
+Finally, the remaining predictors were selected to perform habitat suitability modeling based on previous studies, the ecology of each cetacean species/subspecies and their natural history (Table 1) [@Redfern2017].
 
 In addition, and based on the hypothesis that marine features and dynamic oceanographic conditions influence the distribution of marine cetaceans, we selected environmental predictors that remained within the boundaries of the meso- and macro-scales of sense of dolphins and baleen whales (10 km to 1,000 km distance) [@Torres2017].
-
-
-
-
 
 
 # REFERENCES
