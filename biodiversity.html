@@ -311,104 +311,88 @@ $(document).ready(function () {
 <div id="data-sources" class="section level2">
 <h2>Data Sources</h2>
 <p>To evaluate the potential tourist-vessel collision risk for five
-cetacean species regularly observed in Colombia, we selected the
-following species to conduct habitat modelling analyses: 1) the Atlantic
-spotted dolphin (<em>S. frontalis</em>) only for the Caribbean Sea since
-it is endemic to the Atlantic Ocean <span class="citation">(<a
-href="#ref-Herzing2018" role="doc-biblioref">Herzing and Perrin
-2018</a>)</span>.2) The humpback whale (<em>M. novaeangliae</em>) only
-for the Pacific Ocean, because the stock G uses the Colombian Pacific
-coast as part of its breeding zone <span class="citation">(<a
-href="#ref-Acevedo2017" role="doc-biblioref">Acevedo et al. 2017</a>; <a
-href="#ref-Avila2020" role="doc-biblioref">Ávila et al.
-2020</a>)</span>. 3) The bottlenose dolphin (<em>T. truncatus</em>) for
-both Caribbean and Pacific basins. 4) The pantropical spotted dolphin
-(<em>S. attenuata</em>) for both Caribbean and Pacific basins, but
-occurrences were separated according to the subspecies distribution
-<span class="citation">(<a href="#ref-Forney2012"
-role="doc-biblioref">Forney et al. 2012</a>; <a
-href="#ref-Jefferson2015" role="doc-biblioref">Jefferson et al.
-2015</a>)</span>, so the offshore pantropical spotted (<em>S. a.
-attenuata</em>) was analyzed in both Caribbean and Pacific basins, while
-the coastal pantropical spotted (<em>S. a. graffmani</em>) was modeled
-for coastal records only in the Pacific basin due it is exclusive to
-coastal waters of the eastern tropical Pacific <span
+cetacean species regularly observed in Colombia, we conducted habitat
+modeling analyses for the following species:</p>
+<ul>
+<li><p>Atlantic spotted dolphin (<em>S. frontalis</em>) for the
+Caribbean Sea only, as it is endemic to the Atlantic Ocean <span
+class="citation">(<a href="#ref-Herzing2018"
+role="doc-biblioref">Herzing and Perrin 2018</a>)</span>.</p></li>
+<li><p>Humpback whale (<em>M. novaeangliae</em>) for the Pacific Ocean
+only, as the Colombian Pacific coast serves as part of the breeding zone
+for stock G <span class="citation">(<a href="#ref-Acevedo2017"
+role="doc-biblioref">Acevedo et al. 2017</a>; <a href="#ref-Avila2020"
+role="doc-biblioref">Ávila et al. 2020</a>)</span>.</p></li>
+<li><p>Bottlenose dolphin (<em>T. truncatus</em>) for both Caribbean and
+Pacific basins.</p></li>
+<li><p>Pantropical spotted dolphin (<em>S. attenuata</em>) for both
+basins, but occurrences were separated by subspecies distribution: the
+offshore pantropical spotted (S. a. attenuata) was analyzed in both
+basins, while the coastal pantropical spotted (<em>S. a. graffmani</em>)
+was modeled for coastal records in the Pacific basin only, as it is
+exclusive to the coastal waters of the eastern tropical Pacific <span
 class="citation">(<a href="#ref-Jefferson2015"
 role="doc-biblioref">Jefferson et al. 2015</a>; <a
-href="#ref-Perrin2018" role="doc-biblioref">Perrin 2018</a>)</span>. 5)
-The spinner dolphin (<em>S. longirostris</em>) also was analyzed for
-both basins and occurrences were separated by subspecies distribution,
-as follows: the Gray’s spinner (<em>S. l. longirostris</em>) for the
-Caribbean basin, the Eastern spinner (<em>S. l. orientalis</em>) for
-coastal occurrences in the Pacific basin, and the Central American
-spinner (<em>S. l. centroamericana</em>) for offshore occurrences in the
-Pacific basin <span class="citation">(<a href="#ref-Forney2012"
-role="doc-biblioref">Forney et al. 2012</a>; <a
+href="#ref-Perrin2018" role="doc-biblioref">Perrin
+2018</a>)</span>.</p></li>
+<li><p>Spinner dolphin (<em>S. longirostris</em>) for both basins,
+separated by subspecies distribution: the Gray’s spinner (<em>S. l.
+longirostris</em>) for the Caribbean basin, the Eastern spinner (<em>S.
+l. orientalis</em>) for coastal occurrences in the Pacific basin, and
+the Central American spinner (S. l. centroamericana) for offshore
+occurrences in the Pacific basin <span class="citation">(<a
+href="#ref-Forney2012" role="doc-biblioref">Forney et al. 2012</a>; <a
 href="#ref-Jefferson2015" role="doc-biblioref">Jefferson et al.
-2015</a>)</span>.</p>
-<p>The georeferenced occurrence data for cetacean species was compiled
-from ten (10) online databases using packages such as “<em>spocc</em>”
-(v 1.0.8; <span class="citation">Chamberlain et al. (<a
-href="#ref-Chamberlain2018" role="doc-biblioref">2018</a>)</span>),
-“<em>robis</em>” (v 2.3.9; <span class="citation">Provoost and S. (<a
-href="#ref-Provoost2020" role="doc-biblioref">2020</a>)</span>),
-“<em>rgbif</em>” (v 3.1.0; <span class="citation">Chamberlain (<a
-href="#ref-Chamberlain2017" role="doc-biblioref">2017</a>)</span>), and
-“<em>sp</em>” (v 1.4-2; <span class="citation">Pebesma and Bivand (<a
-href="#ref-Pebesma2005" role="doc-biblioref">2005</a>)</span>) with the
-R program <span class="citation">(<a href="#ref-RTeam2008"
-role="doc-biblioref">R Development Core Team 2008</a>)</span>.</p>
-<p>For the subspecies, the search was conducted explicitly using the
-complete name. The databases used were: the Atlas of Living Australia
-(ALA; <a href="http://www.ala.org.au/"
-class="uri">http://www.ala.org.au/</a>), Berkeley Ecoengine (Ecoengine;
-<a href="https://ecoengine.berkeley.edu/"
-class="uri">https://ecoengine.berkeley.edu/</a>), Biodiversity
-Information Serving Our Nation (BISON; <a href="https://bison.usgs.gov/"
-class="uri">https://bison.usgs.gov/</a>), Global Biodiversity
-Information Facility (GBIF; <a href="https://www.gbif.org"
-class="uri">https://www.gbif.org</a>), Integrated Digitized
-Biocollections (iDigBio; <a href="https://www.idigbio.org/"
-class="uri">https://www.idigbio.org/</a>), iNaturalist (iNat; <a
-href="http://www.inaturalist.org/"
-class="uri">http://www.inaturalist.org/</a>), the Ocean Biogeographic
-Information System (OBIS; <a href="https://obis.org"
-class="uri">https://obis.org</a>), Distributed databases with backbone
-(VertNet; <a href="http://vertnet.org/"
-class="uri">http://vertnet.org/</a>), the <em>Sistema de Información
-Ambiental Marina</em> (<em>SIAM</em>; <a
-href="http://siam.invemar.org.co"
-class="uri">http://siam.invemar.org.co</a> operated by the Colombia’s
-Marine and Coastal Research Institute INVEMAR), and the <em>Red Nacional
-de Datos Abiertos sobre Biodiversidad de Colombia</em> (<em>SiB
-Colombia</em>, <a href="https://sibcolombia.net/"
-class="uri">https://sibcolombia.net/</a>).<br />
-</p>
-<p>In addition to public databases, we used unpublished data collected
-in the oceanographic cruises of the <em>National Maritime Directorate of
-Colombia</em> ( <em>DIMAR</em>, for its acronym in Spanish), which were
-conducted in the frame of the ENSO Regional Study (<em>ERFEN</em>, for
-its acronym in Spanish) through the <em>Centro de Investigaciones
-Oceanográficas e Hidrográficas del Pacífico – CCCP</em> (Supplementary
-Table 1).</p>
-<p>The filtering of databases and the cleaning of duplicate records were
-carried out using a R language <a
-href="https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/02_Species_Occurrences/01_Occurrence_Data_Download.R">script</a>
-<span class="citation">(<a href="#ref-RTeam2008" role="doc-biblioref">R
-Development Core Team 2008</a>)</span> with the “<em>tidyverse</em>” (v.
-1.2.0; <span class="citation">Wickham and Wickham (<a
-href="#ref-Wickham2017" role="doc-biblioref">2017</a>)</span>),
-“<em>dplyr</em>” (v. 1.0; <span class="citation">Wickham et al. (<a
-href="#ref-Wickham2019" role="doc-biblioref">2019</a>)</span>),
-“<em>anytime</em>” (v. 0.3.7; <span class="citation">Eddelbuettel (<a
-href="#ref-Eddelbuettel2020" role="doc-biblioref">2020</a>)</span>),
-“<em>rgdal</em>” (v. 1.5-12; <span class="citation">Bivand et al. (<a
-href="#ref-Bivand2020" role="doc-biblioref">2020</a>)</span>),
-“<em>gdata</em>” (v. 2.18.0; <span class="citation">Warnes et al. (<a
-href="#ref-Warnes2012" role="doc-biblioref">2012</a>)</span>), and
-“<em>devtools</em>” (v. 2.3.1; <span class="citation">Wickham et al. (<a
-href="#ref-Wickham2020" role="doc-biblioref">2020</a>)</span>)
-packages.</p>
+2015</a>)</span>.</p></li>
+</ul>
+<p>To locate information on the subspecies, a search was conducted using
+the complete name of each subspecies. The following databases were used:
+Atlas of Living Australia (ALA, <a href="http://www.ala.org.au/"
+class="uri">http://www.ala.org.au/</a>), Berkeley Ecoengine (Ecoengine,
+<a
+href="https://ecoengine.berkeley.edu/">https://ecoengine.berkeley.edu/</a>),
+Biodiversity Information Serving Our Nation (BISON, <a
+href="https://bison.usgs.gov/">https://bison.usgs.gov/</a>), Global
+Biodiversity Information Facility (GBIF,<a
+href="https://www.gbif.org">https://www.gbif.org</a> ), Integrated
+Digitized Biocollections (iDigBio, <a
+href="https://www.idigbio.org/">https://www.idigbio.org/</a>),
+iNaturalist (iNat, <a
+href="http://www.inaturalist.org/">http://www.inaturalist.org/</a>), the
+Ocean Biogeographic Information System (OBIS, <a
+href="https://obis.org">https://obis.org</a>), Distributed Databases
+with Backbone (VertNet, <a
+href="http://vertnet.org/">http://vertnet.org/</a>), <em>Sistema de
+Información Ambiental Marina</em> (SIAM, <a
+href="http://siam.invemar.org.co">http://siam.invemar.org.co</a>)
+operated by Colombia’s Marine and Coastal Research Institute
+<em>INVEMAR</em>, and the <em>Red Nacional de Datos Abiertos sobre
+Biodiversidad de Colombia</em> (<em>SiB Colombia</em>, <a
+href="https://sibcolombia.net/">https://sibcolombia.net/</a>)</p>
+<p>In addition to the publicly available databases, our study also
+utilized unpublished data from oceanographic cruises conducted by the
+<em>National Maritime Directorate of Colombia</em> (<em>DIMAR</em>) as
+part of the El Niño Southern Oscillation Regional Study
+(<em>ERFEN</em>). The data was collected by the <em>Centro de
+Investigaciones Oceanográficas e Hidrográficas del Pacífico</em>
+(<em>CCCP</em>) and can be found in the supplementary table 1.</p>
+<p>The removal of duplicate records and the filtering of the datasets
+were performed using a script in the R programming language and packages
+such as “<em>tidyverse</em>”(v. 1.2.0; <span class="citation">Wickham
+and Wickham (<a href="#ref-Wickham2017"
+role="doc-biblioref">2017</a>)</span>), “<em>dplyr</em>”(v. 1.0; <span
+class="citation">Wickham et al. (<a href="#ref-Wickham2019"
+role="doc-biblioref">2019</a>)</span>), “<em>anytime</em>” (v. 0.3.7;
+<span class="citation">Eddelbuettel (<a href="#ref-Eddelbuettel2020"
+role="doc-biblioref">2020</a>)</span>), “<em>rgdal</em>” (v. 1.5-12;
+<span class="citation">Bivand et al. (<a href="#ref-Bivand2020"
+role="doc-biblioref">2020</a>)</span>), “<em>gdata</em>” (v. 2.18.0;
+<span class="citation">Warnes et al. (<a href="#ref-Warnes2012"
+role="doc-biblioref">2012</a>)</span>), and “<em>devtools</em>” (v.
+2.3.1; <span class="citation">Wickham et al. (<a href="#ref-Wickham2020"
+role="doc-biblioref">2020</a>)</span>). This script can be accessed at
+the following GitHub link: <a
+href="https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/02_Species_Occurrences/01_Occurrence_Data_Download.R">https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/02_Species_Occurrences/01_Occurrence_Data_Download.R</a></p>
 <div class="figure" style="text-align: center">
 <img src="Total_Occurrences.png" alt="Supplementary Figure 3. Occurrences downloaded from the biodiversity information databases." width="75%" />
 <p class="caption">
@@ -416,6 +400,9 @@ Supplementary Figure 3. Occurrences downloaded from the biodiversity
 information databases.
 </p>
 </div>
+</div>
+<div id="data-thinning-and-bias-removal." class="section level2">
+<h2>Data thinning and bias removal.</h2>
 </div>
 <div id="references" class="section level1">
 <h1>REFERENCES</h1>
@@ -438,16 +425,6 @@ Bivand R, Keitt T, Rowlingson B (2020) <span class="nocase">rgdal:
 Bindings for the ’Geospatial’ Data Abstraction Library. R package
 version 1.5-12.</span>
 </div>
-<div id="ref-Chamberlain2017" class="csl-entry">
-Chamberlain S (2017) <span class="nocase">rgbif: Interface to the Global
-’Biodiversity’ Information Facility ’API’. R package version
-0.9.8</span>
-</div>
-<div id="ref-Chamberlain2018" class="csl-entry">
-Chamberlain S, Ram K, Hart T (2018) <span class="nocase">spocc:
-Interface to Species Occurrence Data Sources.R package, version 0.8.
-0</span>
-</div>
 <div id="ref-Eddelbuettel2020" class="csl-entry">
 Eddelbuettel D (2020) <span class="nocase">anytime: Anything to
 ’POSIXct’ or ’Date’ Converter. R package version 0.3.7</span>
@@ -469,23 +446,10 @@ Jefferson TA, Webber MA, Pitman RL (2015) <span class="nocase">Marine
 mammals of the world: a comprehensive guide to their
 identification</span>, 2nd edn. Academic Press, Elsevier Inc.
 </div>
-<div id="ref-Pebesma2005" class="csl-entry">
-Pebesma EJ, Bivand RS (2005) <span class="nocase">Classes and methods
-for spatial data in R. R News</span>
-</div>
 <div id="ref-Perrin2018" class="csl-entry">
 Perrin WF (2018) <span>Atlantic Spotted Dolphin: <em>Stenella
 frontalis</em></span>. In: B. Würsig KMK J. G. M. Thewissen (ed) <span
 class="nocase">the Encyclopedia of Marine Mammals</span>. pp 40–42
-</div>
-<div id="ref-Provoost2020" class="csl-entry">
-Provoost P, S. B (2020) <span class="nocase">robis: Ocean Biodiversity
-Information System (OBIS) Client. R package version 2.3.9.</span>
-</div>
-<div id="ref-RTeam2008" class="csl-entry">
-R Development Core Team (2008) <span class="nocase">R A language and
-environment for statistical computing. R Foundation for Statistical
-Computing, Vienna, Austria.</span>
 </div>
 <div id="ref-Warnes2012" class="csl-entry">
 Warnes GR, Bolker B, Gorjanc G, et al (2012) <span class="nocase">gdata:
