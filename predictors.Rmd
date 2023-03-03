@@ -9,7 +9,7 @@ csl: "biodiversity-and-conservation.csl"
 
 ## Data sources
 
-To create the topographic predictors, *General Bathymetric Chart of the Oceans*  (GEBCO, [https://www.gebco.net/](https://www.gebco.net/)) and the *Seafloor Geomorphic Feature Map* ([https://www.bluehabitats.org/?page_id=9](https://www.bluehabitats.org/?page_id=9)) [@Harris2014] were used as spatial data sources. All these data were manually downloaded.
+To create the topographic predictors, *General Bathymetric Chart of the Oceans*  (GEBCO, [https://www.gebco.net/](https://www.gebco.net/)) and the *Seafloor Geomorphic Feature Map* ([https://www.bluehabitats.org/?page_id=9](https://www.bluehabitats.org/?page_id=9)) [@Harris2014] were used as spatial data sources. These data were manually downloaded for this study.
 
 The main data source to obtain the dynamic predictors was the *Copernicus Marine Service Information* ([<https://resources.marine.copernicus.eu/?option=com_csw&task=results](https://resources.marine.copernicus.eu/?option=com_csw&task=results)). The data were downloaded automatically through a [script](https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_NetCDF/01_Predictors_Download.py) built in the Python programming language using the [MINICONDA](https://docs.conda.io/en/latest/miniconda.html) frame and the [MOTU](https://help.marine.copernicus.eu/en/articles/4796533-what-are-the-motu-apis#h_3d33beaafc) Client API of the *Copernicus Marine Service*. 
 
@@ -25,7 +25,7 @@ The GEBCO bathymetry data were used to obtain a bathymetric layer of the study a
 knitr::include_graphics('SuppFig09.png')
 ```
 
-To obtain the layers based on distance to the main geomorphological features, such as "Distance to coast" or "Distance to continental shelf", the "Euclidean Distance" tool of the Spatial Analyst extension of ESRI's ArcGIS® software (v. 10.8.1; @ESRI2017) was used. To obtain these layers and calculate the distances in a proper way and decreasing the calculation errors, first the original projection of the geographic coordinate data (WGS84) was transformed to planar coordinates with the projection Robinson coordinate system using the "Project" tool of the Data Management Tools extension of ESRI's ArcGIS®(v. 10.8.1; @ESRI2017). Once the distance layer was obtained, it was re-projected to geographic coordinates (WGS84) to match the projection of the rest of the data (e.g. Biodiversity and Dynamic data).
+To derive the layers based on the distance to the main geomorphological features, such as 'Distance to coast' or 'Distance to continental shelf', the "Euclidean Distance" tool of the Spatial Analyst extension of ESRI ArcGIS® software (v. 10.8.1; @ESRI2017) was used. To derive these layers accurately and minimize calculation errors, first the original projection of the geographic coordinate data (WGS84) was transformed to planar coordinates with the projection Robinson coordinate system using the "Project" tool of the Data Management Tools extension of ESRI's ArcGIS®(v. 10.8.1; @ESRI2017). The resulting distance layer was then re-projected to geographic coordinates (WGS84) to align with the projection of the other data sets (e.g., biodiversity and dynamic data).
 
 *Information about the Robinson Projection used with ESRI's ArcGIS®*
 
@@ -58,9 +58,10 @@ knitr::include_graphics('Topographic_Predictors.png')
 
 ### Dynamic predictors
 
-For the dynamic layers, the choice of variables was based on the general ecology of cetacean species, taking into account the sensory scale that these species may present in the chosen study area. We relied on the work of @Torres2017 to determine which variables could be part of the modeling according to the distance at which cetacean species, both dolphins and whales, could sense the environment. For both dolphins and whales, the variables that can be sensed by these species at a distance of more than 10 km (minimum area at which the resolution of the geographic layers is presented) are those that stimulate somatosensory perception and chemoreception [@Torres2017]. 
+For the dynamic layers, we selected variables based on the sensory capabilities of cetacean species in the study area, using @Torres2017's work as a guide. We chose variables that stimulate somatosensory perception and chemoreception, which can be sensed by dolphins and whales at a distance of more than 10 km.
 
-To obtain the dynamic predictor layers, we used data for nine variables obtained from the **Copernicus Marine Service Information: Global Ocean Physics Reanalysis Glorys 12V1 (PHYS 001-030)** from two datasets. **cmems_mod_glo_bgc_my_0.083deg-lmtl_PT1D-i** and **cmems_mod_glo_phy_my_0.083_P1M-m**. The temporal resolution of the data was monthly with a time window from 1993-01-01 to 2020-05-31. The spatial resolution of the data was 8.5 km (0.085°) and data were extracted not only at the surface but also at depths up to 200 meters, trying to cover the entire epipelagic layer of the ocean where dolphin and whale species have the greatest foraging activity [@Coram2021].
+To create the dynamic predictor layers, we obtained data from the Copernicus Marine Service Information: **Global Ocean Physics Reanalysis Glorys 12V1 (PHYS 001-030)** from two datasets: **cmems_mod_glo_bgc_my_0.083deg-lmtl_PT1D-i and cmems_mod_glo_phy_my_0.083_P1M-m**. The data had a monthly temporal resolution from 1993-01-01 to 2020-05-31 and a spatial resolution of 8.5 km (0.085°). We extracted data not only at the surface but also at depths up to 200 meters to cover the entire epipelagic layer where dolphin and whale species have the greatest foraging activity [@Coram2021].
+
 
 The variables selected were as follows:
 
@@ -80,6 +81,9 @@ Once these data were downloaded in NetCDF format all calculations to obtain the 
 
 
 Once all the calculations for each variable are done, usually the raster grids are never aligned, because of this it is possible that the model execution cannot be carried out. Therefore, we developed a [script](https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_Predictors_Alignment.R) in the R program [@RTeam2008] using the "*raster*" package (v.3.4-10; @Hijmans2020), to ensure the total alignment of all the grids of the raster layers and also to ensure that all these layers have the same extent, all this without losing the original values. 
+
+
+**The selected variables were mass content of epipelagic micronekton, euphotic zone depth, sea water potential temperature at sea floor, sea surface height above geoid, ocean mixed layer thickness defined by sigma theta, sea water potential temperature, sea water salinity, eastward sea water velocity, and northward sea water velocity. We calculated the mean and standard deviation of all predictors in the study area using a script based on the UNIX shell with the program Climate Data Operator - CDO. To align the raster layers, we developed a script in R using the raster package (v.3.4-10; @Hijmans2020), ensuring that all grids had the same extent without losing the original values."**
 
 ```{r, out.width='110%', fig.align='center', fig.cap='Supplementary Figure 11. Dynamic Enviromental Predictors.', echo=FALSE}
 knitr::include_graphics('Dynamic_Predictors.png')
