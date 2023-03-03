@@ -21,6 +21,10 @@ The main data source to obtain the dynamic predictors was the *Copernicus Marine
 
 The GEBCO bathymetry data were used to obtain a bathymetric layer of the study area, this was cut to the boundaries of this area with the "Extract by Mask" tool of the Spatial Analyst extension of the ESRI ArcGIS® program (v. 10.6; @ESRI2017). To obtain the derived slope topographic layer from the GEBCO data, the "Slope" tool of the Spatial Analyst extension of the ESRI ArcGIS®(v. 10.8.1; @ESRI2017) program was used. 
 
+```{r, out.width='75%', fig.align='center', fig.cap='Supplementary Figure 9. Distribution of the main geomorphological  (seamounts, shelf, trencehs and ridges) features of the study area.', echo=FALSE}
+knitr::include_graphics('SuppFig09.png')
+```
+
 To obtain the layers based on distance to the main geomorphological features, such as "Distance to coast" or "Distance to continental shelf", the "Euclidean Distance" tool of the Spatial Analyst extension of ESRI's ArcGIS® software (v. 10.8.1; @ESRI2017) was used. To obtain these layers and calculate the distances in a proper way and decreasing the calculation errors, first the original projection of the geographic coordinate data (WGS84) was transformed to planar coordinates with the projection Robinson coordinate system using the "Project" tool of the Data Management Tools extension of ESRI's ArcGIS®(v. 10.8.1; @ESRI2017). Once the distance layer was obtained, it was re-projected to geographic coordinates (WGS84) to match the projection of the rest of the data (e.g. Biodiversity and Dynamic data).
 
 *Information about the Robinson Projection used with ESRI's ArcGIS®*
@@ -45,7 +49,7 @@ Datum: D_WGS_1984
     Inverse Flattening: 298.257223563
 
 ```
-```{r, out.width='55%', fig.align='center', fig.cap='Figure XXX. Topographic Enviromental Predictors', echo=FALSE}
+```{r, out.width='55%', fig.align='center', fig.cap='Supplementary Figure 10. Topographic Enviromental Predictors', echo=FALSE}
 knitr::include_graphics('Topographic_Predictors.png')
 ```
 
@@ -77,7 +81,7 @@ Once these data were downloaded in NetCDF format all calculations to obtain the 
 
 Once all the calculations for each variable are done, usually the raster grids are never aligned, because of this it is possible that the model execution cannot be carried out. Therefore, we developed a [script](https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_Predictors_Alignment.R) in the R program [@RTeam2008] using the "*raster*" package (v.3.4-10; @Hijmans2020), to ensure the total alignment of all the grids of the raster layers and also to ensure that all these layers have the same extent, all this without losing the original values. 
 
-```{r, out.width='110%', fig.align='center', fig.cap='Figure XXX. Dynamic Enviromental Predictors.', echo=FALSE}
+```{r, out.width='110%', fig.align='center', fig.cap='Supplementary Figure 11. Dynamic Enviromental Predictors.', echo=FALSE}
 knitr::include_graphics('Dynamic_Predictors.png')
 ```
 
@@ -93,7 +97,7 @@ Only bathymetry and standard deviation of sea water potential temperature were c
 
  
 
-```{r, out.width='110%', fig.align='center', fig.cap='Supplementary Figure XXX. Pearson correlation matrix of the 22 environmental predictors used to conduct the habitat suitability models in the Colombian Caribbean basin for *Stenella attenuata attenuata* (Caribbean occurrences), *S. frontalis* (Caribbean occurrences), *S. longirostris longirostris* (Caribbean occurrences) and *Tursiops truncatus* (Caribbean occurrences).', echo=FALSE}
+```{r, out.width='110%', fig.align='center', fig.cap='Supplementary Figure 12. Pearson correlation matrix of the 22 environmental predictors used to conduct the habitat suitability models in the Colombian Caribbean basin for *Stenella attenuata attenuata* (Caribbean occurrences), *S. frontalis* (Caribbean occurrences), *S. longirostris longirostris* (Caribbean occurrences) and *Tursiops truncatus* (Caribbean occurrences).', echo=FALSE}
 knitr::include_graphics('corr_Matrix_Caribbean.png')
 ```
 
@@ -105,7 +109,7 @@ The distance to the continental shelf presented a strong negative correlation wi
 
 
 
-```{r, out.width='110%', fig.align='center', fig.cap='Supplementary Figure XXX. Pearson correlation matrix of the 22 environmental predictors used to conduct the habitat suitability models in the Colombian Caribbean basin for *Megaptera novaeangliae*, *Stenella attenuata attenuata* (Pacific occurrences), *S. attenuata graffmani*, *S. longirostris centroamericana*, *S. longirostris orientalis*  and *Tursiops truncatus* (Pacific occurrences).', echo=FALSE}
+```{r, out.width='110%', fig.align='center', fig.cap='Supplementary Figure 13. Pearson correlation matrix of the 22 environmental predictors used to conduct the habitat suitability models in the Colombian Caribbean basin for *Megaptera novaeangliae*, *Stenella attenuata attenuata* (Pacific occurrences), *S. attenuata graffmani*, *S. longirostris centroamericana*, *S. longirostris orientalis*  and *Tursiops truncatus* (Pacific occurrences).', echo=FALSE}
 knitr::include_graphics('corr_Matrix_Pacific.png')
 ```
 

@@ -369,6 +369,13 @@ operated by Colombia’s Marine and Coastal Research Institute
 <em>INVEMAR</em>, and the <em>Red Nacional de Datos Abiertos sobre
 Biodiversidad de Colombia</em> (<em>SiB Colombia</em>, <a
 href="https://sibcolombia.net/">https://sibcolombia.net/</a>)</p>
+<div class="figure" style="text-align: center">
+<img src="SuppFig02.png" alt="**Figure S2.** Occurrences downloaded from the biodiversity information databases." width="75%" />
+<p class="caption">
+<strong>Figure S2.</strong> Occurrences downloaded from the biodiversity
+information databases.
+</p>
+</div>
 <p>In addition to the publicly available databases, our study also
 utilized unpublished data from oceanographic cruises conducted by the
 <em>National Maritime Directorate of Colombia</em> (<em>DIMAR</em>) as
@@ -394,15 +401,210 @@ role="doc-biblioref">2020</a>)</span>). This script can be accessed at
 the following GitHub link: <a
 href="https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/02_Species_Occurrences/01_Occurrence_Data_Download.R">https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/02_Species_Occurrences/01_Occurrence_Data_Download.R</a></p>
 <div class="figure" style="text-align: center">
-<img src="Total_Occurrences.png" alt="Supplementary Figure 3. Occurrences downloaded from the biodiversity information databases." width="75%" />
+<img src="Figure_02.png" alt="**Figure 2.** Number and locations of cetacean species/subspecies records reported in the Colombian Caribbean and Pacific basins. Occurrences of humpback whale (*Megaptera novaeangliae*); pantropical spotted dolphin’s subspecies: offshore pantropical spotted (*Stenella attenuata attenuata*) and coastal pantropical spotted (*Stenella attenuata graffmani*); Atlantic spotted dolphins (*Stenella frontalis*); spinner dolphin’s subspecies: Central American spinner (*Stenella longirostris centroamericana*), Gray’s spinner (*Stenella longirostris longirostris*), and Eastern spinner (*Stenella longirostris orientalis*); and bottlenose dolphins (*Tursiops truncatus*)." width="100%" />
 <p class="caption">
-Supplementary Figure 3. Occurrences downloaded from the biodiversity
-information databases.
+<strong>Figure 2.</strong> Number and locations of cetacean
+species/subspecies records reported in the Colombian Caribbean and
+Pacific basins. Occurrences of humpback whale (<em>Megaptera
+novaeangliae</em>); pantropical spotted dolphin’s subspecies: offshore
+pantropical spotted (<em>Stenella attenuata attenuata</em>) and coastal
+pantropical spotted (<em>Stenella attenuata graffmani</em>); Atlantic
+spotted dolphins (<em>Stenella frontalis</em>); spinner dolphin’s
+subspecies: Central American spinner (<em>Stenella longirostris
+centroamericana</em>), Gray’s spinner (<em>Stenella longirostris
+longirostris</em>), and Eastern spinner (<em>Stenella longirostris
+orientalis</em>); and bottlenose dolphins (<em>Tursiops truncatus</em>).
 </p>
 </div>
 </div>
 <div id="data-thinning-and-bias-removal." class="section level2">
 <h2>Data thinning and bias removal.</h2>
+<p>Spatial data thinning and bias removal are crucial steps in
+developing accurate species distribution models. Public and online
+datasets that provide occurrence data often display strong spatial
+biases, which can affect the reliability of these models <span
+class="citation">(<a href="#ref-Fourcade2014"
+role="doc-biblioref">Fourcade et al. 2014</a>)</span>.</p>
+<p>Spatial thinning is a method used to reduce spatial autocorrelation
+and clustering in occurrence records. This technique involves removing
+some of the occurrence records from the dataset to create a more even
+distribution of records across the study area. A random subset of the
+records can be selected or a clustering algorithm can be applied to
+group records that are too close together. These methods help to
+mitigate the impact of spatial biases and improve the accuracy of
+species distribution models.</p>
+<p>To detect the clustering of occurrence data and identify areas of
+highest density, we used kernel density estimation and visualized the
+results using the “<strong>ggplot2</strong>” package (v. 3.4.1; <span
+class="citation">Wickham (<a href="#ref-Wickham2016"
+role="doc-biblioref">2016</a>)</span>) in R (see Figure S3).</p>
+<div class="figure" style="text-align: center">
+<img src="SuppFig03.png" alt="**Figure S3.** Two-dimensional estimation of the density of cetacean species occurrences using an axis-aligned bivariate normal kernel, evaluated on a square grid, using the  &quot;*ggplot2*&quot; (v. 3.4.1; @Wickham2016) R package." width="120%" />
+<p class="caption">
+<strong>Figure S3.</strong> Two-dimensional estimation of the density of
+cetacean species occurrences using an axis-aligned bivariate normal
+kernel, evaluated on a square grid, using the “<em>ggplot2</em>” (v.
+3.4.1; <span class="citation">Wickham (<a href="#ref-Wickham2016"
+role="doc-biblioref">2016</a>)</span>) R package.
+</p>
+</div>
+<p>For all datasets of species occurrence records (Figure S3), a spatial
+thinning analysis was performed using the R package “<em>spThin</em>”
+<span class="citation">(<a href="#ref-Aiello-Lammens2015"
+role="doc-biblioref">Aiello-Lammens et al. 2015</a>)</span>, the
+analysis was performed using thinning parameter of 10 km for minimal
+separation of the occurrence data and three repetitions of the thinning
+procedure on each the dataset.</p>
+<p>The table S1 shows the results of the spatial thinning analysis for
+the species/subspecies in different basins. The “Occurrences” column
+displays the number of occurrence records available for each
+species/subspecies in each basin. The “Thinned 01”, “Thinned 02”, and
+“Thinned 03” columns represent the number of occurrence records
+remaining after spatial thinning was applied in a different repetition.
+The “Data Conservation” column shows the percentage of occurrence
+records that were retained after thinning. For example, for <em>M.
+novaeangliae</em> in the Pacific basin, only 8% of the original
+occurrence records were retained after thinning. In contrast, for S. a.
+attenuata in the Pacific basin, 67% of the original occurrence records
+were retained after thinning.</p>
+<p><strong>Table S1</strong>. Number of occurrences of cetacean
+species/subspecies obtained in the automatic query and Number of
+occurrences reduced through the spatial thinning technique with the R
+package “<em>spThin</em>” <span class="citation">(<a
+href="#ref-Aiello-Lammens2015" role="doc-biblioref">Aiello-Lammens et
+al. 2015</a>)</span>.</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="9%" />
+<col width="13%" />
+<col width="13%" />
+<col width="12%" />
+<col width="12%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><strong>Specie/Subspecie</strong></th>
+<th align="center"><strong>Basin</strong></th>
+<th align="center"><strong>Ocurrences</strong></th>
+<th align="center"><strong>Thinned 01</strong></th>
+<th align="center"><strong>Thinned 02</strong></th>
+<th align="center"><strong>Thinned 03</strong></th>
+<th align="center"><strong>Data Conservation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><em>M. novaeangliae</em></td>
+<td align="center"><strong>Pacific</strong></td>
+<td align="center">7129</td>
+<td align="center">586</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">8%</td>
+</tr>
+<tr class="even">
+<td align="center"><em>S. a. attenuata</em></td>
+<td align="center"><strong>Caribbean</strong></td>
+<td align="center">175</td>
+<td align="center">107</td>
+<td align="center">107</td>
+<td align="center">-</td>
+<td align="center">61%</td>
+</tr>
+<tr class="odd">
+<td align="center"><em>S. a. attenuata</em></td>
+<td align="center"><strong>Pacific</strong></td>
+<td align="center">298</td>
+<td align="center">201</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">67%</td>
+</tr>
+<tr class="even">
+<td align="center"><em>S. a. graffmani</em></td>
+<td align="center"><strong>Pacific</strong></td>
+<td align="center">983</td>
+<td align="center">215</td>
+<td align="center">215</td>
+<td align="center">-</td>
+<td align="center">22%</td>
+</tr>
+<tr class="odd">
+<td align="center"><em>S. frontalis</em></td>
+<td align="center"><strong>Caribbean</strong></td>
+<td align="center">189</td>
+<td align="center">82</td>
+<td align="center">82</td>
+<td align="center">-</td>
+<td align="center">43%</td>
+</tr>
+<tr class="even">
+<td align="center"><em>S. l. centroamericana</em></td>
+<td align="center"><strong>Pacific</strong></td>
+<td align="center">125</td>
+<td align="center">28</td>
+<td align="center">28</td>
+<td align="center">28</td>
+<td align="center">22%</td>
+</tr>
+<tr class="odd">
+<td align="center"><em>S. l. longirostris</em></td>
+<td align="center"><strong>Caribbean</strong></td>
+<td align="center">53</td>
+<td align="center">35</td>
+<td align="center">35</td>
+<td align="center">35</td>
+<td align="center">66%</td>
+</tr>
+<tr class="even">
+<td align="center"><em>S. l. orientalis</em></td>
+<td align="center"><strong>Pacific</strong></td>
+<td align="center">94</td>
+<td align="center">46</td>
+<td align="center">46</td>
+<td align="center">46</td>
+<td align="center">46%</td>
+</tr>
+<tr class="odd">
+<td align="center"><em>T. truncatus</em></td>
+<td align="center"><strong>Caribbean</strong></td>
+<td align="center">165</td>
+<td align="center">82</td>
+<td align="center">82</td>
+<td align="center">82</td>
+<td align="center">50%</td>
+</tr>
+<tr class="even">
+<td align="center"><em>T. truncatus</em></td>
+<td align="center"><strong>Pacific</strong></td>
+<td align="center">690</td>
+<td align="center">263</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">38%</td>
+</tr>
+</tbody>
+</table>
+<p>To detect the effect of spatial thinning, again, kernel density
+estimation was used and the results were visualized using the
+“<strong>ggplot2</strong>” package (v. 3.4.1; <span
+class="citation">Wickham (<a href="#ref-Wickham2016"
+role="doc-biblioref">2016</a>)</span>) in R (Figure S4).</p>
+<div class="figure" style="text-align: center">
+<img src="SuppFig04.png" alt="**Figure S4.** Two-dimensional estimation of the density of cetacean species occurrences after the spatial thinning, using an axis-aligned bivariate normal kernel, evaluated on a square grid, using the  &quot;*ggplot2*&quot; (v. 3.4.1; @Wickham2016) R package." width="120%" />
+<p class="caption">
+<strong>Figure S4.</strong> Two-dimensional estimation of the density of
+cetacean species occurrences after the spatial thinning, using an
+axis-aligned bivariate normal kernel, evaluated on a square grid, using
+the “<em>ggplot2</em>” (v. 3.4.1; <span class="citation">Wickham (<a
+href="#ref-Wickham2016" role="doc-biblioref">2016</a>)</span>) R
+package.
+</p>
+</div>
+<p>All the analysis in R are available on this link: <a
+href="https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/02_Species_Occurrences/02_Occ_Bias_Elimination.R">https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/02_Species_Occurrences/02_Occ_Bias_Elimination.R</a></p>
 </div>
 <div id="references" class="section level1">
 <h1>REFERENCES</h1>
@@ -413,6 +615,13 @@ class="nocase">Migratory preferences of humpback whales between feeding
 and breeding grounds in the eastern South Pacific</span>. Marine Mammal
 Science 33:1035–1052. <a
 href="https://doi.org/10.1111/mms.12423">https://doi.org/10.1111/mms.12423</a>
+</div>
+<div id="ref-Aiello-Lammens2015" class="csl-entry">
+Aiello-Lammens ME, Boria RA, Radosavljevic A, et al (2015) <span
+class="nocase">spThin: An R package for spatial thinning of species
+occurrence records for use in ecological niche models</span>. Ecography
+38:541–545. <a
+href="https://doi.org/10.1111/ecog.01132">https://doi.org/10.1111/ecog.01132</a>
 </div>
 <div id="ref-Avila2020" class="csl-entry">
 Ávila IC, Dormann CF, García C, et al (2020) <span
@@ -435,6 +644,12 @@ class="nocase">Habitat-based spatial models of cetacean density in the
 eastern Pacific Ocean</span>. Endangered Species Research 16:113–133. <a
 href="https://doi.org/10.3354/esr00393">https://doi.org/10.3354/esr00393</a>
 </div>
+<div id="ref-Fourcade2014" class="csl-entry">
+Fourcade Y, Engler JO, Rödder D, Secondi J (2014) Mapping species
+distributions with MAXENT using a geographically biased sample of
+presence data: A performance assessment of methods for correcting
+sampling bias. PloS one 9:e97122
+</div>
 <div id="ref-Herzing2018" class="csl-entry">
 Herzing DL, Perrin WF (2018) <span>Atlantic Spotted Dolphin:
 <em>Stenella frontalis</em></span>. In: <span class="nocase">the
@@ -455,6 +670,10 @@ class="nocase">the Encyclopedia of Marine Mammals</span>. pp 40–42
 Warnes GR, Bolker B, Gorjanc G, et al (2012) <span class="nocase">gdata:
 Various R programming tools for data manipulation. R package version
 2.12.0</span>. R package version 2.13.3
+</div>
+<div id="ref-Wickham2016" class="csl-entry">
+Wickham H (2016) <a href="https://ggplot2.tidyverse.org">ggplot2:
+Elegant graphics for data analysis</a>. Springer-Verlag New York
 </div>
 <div id="ref-Wickham2020" class="csl-entry">
 Wickham H, Chang W, Hester J, Chang W (2020) <span
