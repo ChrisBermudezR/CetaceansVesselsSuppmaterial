@@ -13,7 +13,7 @@
 
 <title>Environmental predictors</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -163,11 +163,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -196,8 +200,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -205,16 +209,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -343,9 +340,9 @@ tool of the Spatial Analyst extension of the ESRI ArcGIS®(v. 10.8.1;
 <span class="citation">ESRI (<a href="#ref-ESRI2017"
 role="doc-biblioref">2017</a>)</span>) program was used.</p>
 <div class="figure" style="text-align: center">
-<img src="SuppFig09.png" alt="Supplementary Figure 9. Distribution of the main geomorphological  (seamounts, shelf, trencehs and ridges) features of the study area." width="75%" />
+<img src="SuppFig09.png" alt="**Figure S5**. Distribution of the main geomorphological  (seamounts, shelf, trencehs and ridges) features of the study area." width="75%" />
 <p class="caption">
-Supplementary Figure 9. Distribution of the main geomorphological
+<strong>Figure S5</strong>. Distribution of the main geomorphological
 (seamounts, shelf, trencehs and ridges) features of the study area.
 </p>
 </div>
@@ -385,9 +382,9 @@ Datum: D_WGS_1984
     Inverse Flattening: 298.257223563
 </code></pre>
 <div class="figure" style="text-align: center">
-<img src="Topographic_Predictors.png" alt="Supplementary Figure 10. Topographic Enviromental Predictors" width="55%" />
+<img src="Topographic_Predictors.png" alt="**Figure S6**. Topographic Enviromental Predictors" width="55%" />
 <p class="caption">
-Supplementary Figure 10. Topographic Enviromental Predictors
+<strong>Figure S6</strong>. Topographic Enviromental Predictors
 </p>
 </div>
 </div>
@@ -408,96 +405,66 @@ cmems_mod_glo_phy_my_0.083_P1M-m</strong>. The data had a monthly
 temporal resolution from 1993-01-01 to 2020-05-31 and a spatial
 resolution of 8.5 km (0.085°). We extracted data not only at the surface
 but also at depths up to 200 meters to cover the entire epipelagic layer
-where dolphin and whale species have the greatest foraging activity
+where dolphins and whales species have the greatest foraging activity
 <span class="citation">(<a href="#ref-Coram2021"
 role="doc-biblioref">Coram et al. 2021</a>)</span>.</p>
-<p>The variables selected were as follows:</p>
-<ol style="list-style-type: decimal">
-<li>Mass content of epipelagic micronekton expressed as wet weight in
-sea water (mnkc_epi [g/m2])</li>
-<li>Euphotic zone depth (zeu [m])</li>
-<li>Sea water potential temperature at sea floor (bottomT [°C])</li>
-<li>Sea surface height above geoid (zos [m])</li>
-<li>Ocean mixed layer thickness defined by sigma theta (mlotst [m])</li>
-<li>Sea water potential temperature (thetao [°C])</li>
-<li>Sea water salinity (so [10-3])</li>
-<li>Eastward sea water velocity (uo [m/s])</li>
-<li>Northward sea water velocity (vo [m/s])</li>
-</ol>
-<p>Once these data were downloaded in NetCDF format all calculations to
-obtain the mean and standard deviation, in time and depth of all
-predictors in the study area, were processed with a <a
-href="https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_NetCDF/02_NetCDF_Processing.sh">script</a>
-based on the UNIX shell with the program <strong>Climate Data Operator -
-CDO</strong> through the Windows Subsystem Linux (WSL version 2) with
-the Ubuntu 20.04 LTS distro. To calculate the magnitude of the currents,
-it was obtained from the eastward seawater velocity (uo [m/s]) and the
-northward seawater velocity (vo [m/s]) with the following equation:
-<span class="math inline">\(|v| = \sqrt{(uo)^2 + (vo)^2}\)</span>.</p>
-<p>Once all the calculations for each variable are done, usually the
-raster grids are never aligned, because of this it is possible that the
-model execution cannot be carried out. Therefore, we developed a <a
-href="https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_Predictors_Alignment.R">script</a>
-in the R program <span class="citation">(<a href="#ref-RTeam2008"
-role="doc-biblioref">R Development Core Team 2008</a>)</span> using the
-“<em>raster</em>” package (v.3.4-10; <span class="citation">Hijmans et
-al. (<a href="#ref-Hijmans2020" role="doc-biblioref">2020</a>)</span>),
-to ensure the total alignment of all the grids of the raster layers and
-also to ensure that all these layers have the same extent, all this
-without losing the original values.</p>
-<p><strong>The selected variables were mass content of epipelagic
-micronekton, euphotic zone depth, sea water potential temperature at sea
-floor, sea surface height above geoid, ocean mixed layer thickness
-defined by sigma theta, sea water potential temperature, sea water
-salinity, eastward sea water velocity, and northward sea water velocity.
-We calculated the mean and standard deviation of all predictors in the
-study area using a script based on the UNIX shell with the program
-Climate Data Operator - CDO. To align the raster layers, we developed a
-script in R using the raster package (v.3.4-10; <span
-class="citation">Hijmans et al. (<a href="#ref-Hijmans2020"
-role="doc-biblioref">2020</a>)</span>), ensuring that all grids had the
-same extent without losing the original values.”</strong></p>
+<p>The selected variables were mass content of epipelagic micronekton
+(mnkc_epi [g/m2]), euphotic zone depth (zeu [m]), sea water potential
+temperature at sea floor (bottomT [°C]), sea surface height above geoid
+(zos [m]), ocean mixed layer thickness defined by sigma theta (mlotst
+[m]), sea water potential temperature (thetao [°C]), sea water salinity
+(so [10-3]), eastward sea water velocity (uo [m/s]), and northward sea
+water velocity (vo [m/s]). We calculated the mean and standard deviation
+of all predictors in the study area using a script based on the UNIX
+shell with the program Climate Data Operator - CDO through the Windows
+Subsystem Linux (WSL version 2) using the Ubuntu 20.04 LTS distro. To
+align the raster layers, we developed a script in R using the raster
+package (v.3.4-10; <span class="citation">Hijmans et al. (<a
+href="#ref-Hijmans2020" role="doc-biblioref">2020</a>)</span>), ensuring
+that all grids had the same extent without losing the original
+values.</p>
 <div class="figure" style="text-align: center">
-<img src="Dynamic_Predictors.png" alt="Supplementary Figure 11. Dynamic Enviromental Predictors." width="110%" />
+<img src="Dynamic_Predictors.png" alt="**Figure S7**. Dynamic Enviromental Predictors." width="110%" />
 <p class="caption">
-Supplementary Figure 11. Dynamic Enviromental Predictors.
+<strong>Figure S7</strong>. Dynamic Enviromental Predictors.
 </p>
 </div>
 </div>
 </div>
 <div id="selection-of-environmental-predictors" class="section level2">
 <h2>Selection of Environmental predictors</h2>
-<p>Because some of the cetacean species or subspecies considered in this
-study are only distributed in one of the two ocean basins of Colombia,
-the predictor layers were divided into two representative sets for each
-basin. After this division, the environmental predictor layers were
-subjected to a Pearson correlation test (<em>r</em>) to rule out any
-covariation. This test was performed using the “layerstats” tool with
-the “raster” package <span class="citation">(<a href="#ref-Hijmans2020"
-role="doc-biblioref">Hijmans et al. 2020</a>)</span> of the R program,
-all available in this <a
-href="https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_Predictors_Alignment.R">script</a>.
-The pairs of layers that were correlated with more than an <em>r</em> of
-0.8, only one of them was selected to be used in the model run.</p>
-<p>For the Caribbean basin, of the 22 predictors considered, five were
-detected that presented correlations with other predictors with an
-<em>r</em> &gt; 0.75. Bathymetry and distance to the continental shelf
-had a very strong negative correlation (<em>r</em> = -085) and the
-standard deviation of sea water potential temperature had a strong
-negative correlation (<em>r</em> = -085) with the mean sea water
-potential temperature, and also with the standard deviation (<em>r</em>=
--0.82) and mean (<em>r</em> = -0.92) of sea water potential temperature
-at sea floor. The mean sea water potential temperature at sea floor also
-showed a very strong correlation with the mean sea water potential
-temperature (<em>r</em> = 0.82) (Supplementary Figure XXX).</p>
-<p>Only bathymetry and standard deviation of sea water potential
-temperature were chosen as the final uncorrelated predictors to be used
-in the model because they can be used as proxies for the other
-correlated variables.</p>
+<p>As some cetacean species or subspecies considered in this study are
+only found in one of the two ocean basins of Colombia, we divided the
+predictor layers into two sets, one for each basin. We then conducted a
+Pearson correlation test (r) on the environmental predictor layers to
+identify and exclude any layers with high covariation. To perform this
+test, we used the “layerstats” tool in the R program’s “raster” package
+<span class="citation">(<a href="#ref-Hijmans2020"
+role="doc-biblioref">Hijmans et al. 2020</a>)</span>, which can be found
+in this script (<a
+href="https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_Predictors_Alignment.R"
+class="uri">https://github.com/ChrisBermudezR/Cetacean_Tourist_Vessel_Collision_Risk_Assessment/blob/main/03_Predictors/01_Predictors_Alignment.R</a>).
+If two layers were found to have an r value greater than 0.8, we only
+used one of them in the model run.</p>
+<p>For the Caribbean basin, we detected five predictors out of the 22
+considered that had correlations with other predictors with an r greater
+than 0.75. We found that bathymetry and distance to the continental
+shelf had a very strong negative correlation (<em>r</em> = -0.85), while
+the standard deviation of sea water potential temperature had a strong
+negative correlation (<em>r</em> = -0.85) with the mean sea water
+potential temperature, as well as with the standard deviation
+(<em>r</em> = -0.82) and mean (<em>r</em> = -0.92) of sea water
+potential temperature at the sea floor. In addition, the mean sea water
+potential temperature at the sea floor was found to have a very strong
+correlation with the mean sea water potential temperature (<em>r</em> =
+0.82) (see Figure S8). After analyzing these correlations, we decided to
+only use bathymetry and standard deviation of sea water potential
+temperature as final uncorrelated predictors in the model, as they can
+be used as proxies for the other correlated variables.</p>
 <div class="figure" style="text-align: center">
-<img src="corr_Matrix_Caribbean.png" alt="Supplementary Figure 12. Pearson correlation matrix of the 22 environmental predictors used to conduct the habitat suitability models in the Colombian Caribbean basin for *Stenella attenuata attenuata* (Caribbean occurrences), *S. frontalis* (Caribbean occurrences), *S. longirostris longirostris* (Caribbean occurrences) and *Tursiops truncatus* (Caribbean occurrences)." width="110%" />
+<img src="corr_Matrix_Caribbean.png" alt="**Figure S8**. Pearson correlation matrix of the 22 environmental predictors used to conduct the habitat suitability models in the Colombian Caribbean basin for *Stenella attenuata attenuata* (Caribbean occurrences), *S. frontalis* (Caribbean occurrences), *S. longirostris longirostris* (Caribbean occurrences) and *Tursiops truncatus* (Caribbean occurrences)." width="110%" />
 <p class="caption">
-Supplementary Figure 12. Pearson correlation matrix of the 22
+<strong>Figure S8</strong>. Pearson correlation matrix of the 22
 environmental predictors used to conduct the habitat suitability models
 in the Colombian Caribbean basin for <em>Stenella attenuata
 attenuata</em> (Caribbean occurrences), <em>S. frontalis</em> (Caribbean
@@ -505,29 +472,29 @@ occurrences), <em>S. longirostris longirostris</em> (Caribbean
 occurrences) and <em>Tursiops truncatus</em> (Caribbean occurrences).
 </p>
 </div>
-<p>For the Pacific basin, of the 22 predictors considered, 13 were found
-to have correlations with other predictors with r &gt; 0.75
-(Supplementary Figure XXX). The mean sea water potential temperature at
-sea floor presented three strong positive correlations with bathymetry
-(<em>r</em> = 0.76), the standard deviation of sea water potential
-temperature at sea floor (<em>r</em> = 0.90), and the mean sea water
-potential temperature (<em>r</em> = 0.87). Only the standard deviation
-of the sea water potential temperature (<em>r</em> = -0.85) and the mean
-sea water salinity (<em>r</em> = -0.75) presented a strong negative
-correlation with this predictor.</p>
-<p>The distance to the continental shelf presented a strong negative
+<p>Of the 22 predictors considered for the Pacific basin, 13 were found
+to have correlations with other predictors with an r greater than 0.75
+(see Supplementary Figure XXX). The mean sea water potential temperature
+at the sea floor exhibited three strong positive correlations with
+bathymetry (<em>r</em> = 0.76), the standard deviation of sea water
+potential temperature at the sea floor (<em>r</em> = 0.90), and the mean
+sea water potential temperature (<em>r</em> = 0.87). Only the standard
+deviation of sea water potential temperature (<em>r</em> = -0.85) and
+the mean sea water salinity (<em>r</em> = -0.75) presented a strong
+negative correlation with this predictor.</p>
+<p>The distance to the continental shelf showed a strong negative
 correlation with the mean and standard deviation of the mass content of
-epipelagic micronekton (<em>r</em> = -0.81 and <em>r</em> = -0.76
+epipelagic micronekton (<em>r</em> = -0.81 and <em>r</em> = -0.76,
 respectively) and a strong positive correlation with the distance to the
-trenches (<em>r</em> = 0.76). The mean and standard deviation of the
-ocean mixed layer thickness showed a very strong positive correlation
-with each other (<em>r</em> = 0.97) and the mean sea water potential
+trenches (<em>r</em> = 0.76). The mean and standard deviation of ocean
+mixed layer thickness exhibited a very strong positive correlation with
+each other (<em>r</em> = 0.97), and the mean sea water potential
 temperature showed a strong negative correlation (<em>r</em> = -0.86)
-with the mean sea water potential temperature.</p>
+with the mean sea water potential temperature (see Figure S9).</p>
 <div class="figure" style="text-align: center">
-<img src="corr_Matrix_Pacific.png" alt="Supplementary Figure 13. Pearson correlation matrix of the 22 environmental predictors used to conduct the habitat suitability models in the Colombian Caribbean basin for *Megaptera novaeangliae*, *Stenella attenuata attenuata* (Pacific occurrences), *S. attenuata graffmani*, *S. longirostris centroamericana*, *S. longirostris orientalis*  and *Tursiops truncatus* (Pacific occurrences)." width="110%" />
+<img src="corr_Matrix_Pacific.png" alt="**Figure S9**. Pearson correlation matrix of the 22 environmental predictors used to conduct the habitat suitability models in the Colombian Caribbean basin for *Megaptera novaeangliae*, *Stenella attenuata attenuata* (Pacific occurrences), *S. attenuata graffmani*, *S. longirostris centroamericana*, *S. longirostris orientalis*  and *Tursiops truncatus* (Pacific occurrences)." width="110%" />
 <p class="caption">
-Supplementary Figure 13. Pearson correlation matrix of the 22
+<strong>Figure S9</strong>. Pearson correlation matrix of the 22
 environmental predictors used to conduct the habitat suitability models
 in the Colombian Caribbean basin for <em>Megaptera novaeangliae</em>,
 <em>Stenella attenuata attenuata</em> (Pacific occurrences), <em>S.
@@ -536,17 +503,19 @@ attenuata graffmani</em>, <em>S. longirostris centroamericana</em>,
 (Pacific occurrences).
 </p>
 </div>
-<p>Finally, the remaining predictors were selected to perform habitat
+<p>Finally, we selected the remaining predictors to perform habitat
 suitability modeling based on previous studies, the ecology of each
-cetacean species/subspecies and their natural history (Table 1) <span
-class="citation">(<a href="#ref-Redfern2017"
-role="doc-biblioref">Redfern et al. 2017</a>)</span>.</p>
-<p>In addition, and based on the hypothesis that marine features and
-dynamic oceanographic conditions influence the distribution of marine
-cetaceans, we selected environmental predictors that remained within the
-boundaries of the meso- and macro-scales of sense of dolphins and baleen
-whales (10 km to 1,000 km distance) <span class="citation">(<a
-href="#ref-Torres2017" role="doc-biblioref">Torres 2017</a>)</span>.</p>
+cetacean species/subspecies, and their natural history (refer to
+<strong>Table 1</strong>) <span class="citation">(<a
+href="#ref-Redfern2017" role="doc-biblioref">Redfern et al.
+2017</a>)</span>.</p>
+<p>Moreover, as we hypothesized that marine features and dynamic
+oceanographic conditions influence the distribution of marine cetaceans,
+we selected environmental predictors that remained within the boundaries
+of the meso- and macro-scales of sense of dolphins and baleen whales
+(<em>i.e.</em>, distances ranging from 10 km to 1,000 km) <span
+class="citation">(<a href="#ref-Torres2017" role="doc-biblioref">Torres
+2017</a>)</span>.”</p>
 </div>
 <div id="references" class="section level1">
 <h1>REFERENCES</h1>
@@ -571,11 +540,6 @@ href="https://doi.org/10.1016/j.margeo.2014.01.011">https://doi.org/10.1016/j.ma
 Hijmans RJ, Van Etten J, Cheng J, et al (2020) <span
 class="nocase">raster: Geographic Data Analysis and Modeling.R package
 version 3.3</span>
-</div>
-<div id="ref-RTeam2008" class="csl-entry">
-R Development Core Team (2008) <span class="nocase">R A language and
-environment for statistical computing. R Foundation for Statistical
-Computing, Vienna, Austria.</span>
 </div>
 <div id="ref-Redfern2017" class="csl-entry">
 Redfern VJ, Hatch LT, Caldow C, et al (2017) <span

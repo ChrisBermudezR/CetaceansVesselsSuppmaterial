@@ -1,10 +1,24 @@
 ---
-title: "Tourism Route Analysis"
+title: "Tourism Traffic Analysis"
 bibliography: Bibliography.bib
 link-citations: yes
 csl: "biodiversity-and-conservation.csl"
 
 ---
+The tourist vessels can be classified into two categories based on their purpose. The first category is passenger vessels, which includes large ships like cruises. The second category is pleasure boats, which includes smaller vessels used for tourism and recreational activities, such as motor yachts and sailboats.
+
+We defined vessel traffic as the number of ships and vessels present in a particular area at a given time and vessel routes as the specific paths taken by vessels when traveling between two points in the ocean. Shipping lanes are defined areas of the ocean where vessels typically navigate.
+
+To assess the current tourist shipping lanes within the Colombian EEZ, we evaluated vessel traffic for each year from 2016 to 2019, obtained from Marine Traffic -- Global Ship Tracking Intelligence (<http://www.marinetraffic.com>), which provides traffic data from vessels with Automatic Identification System (AIS). Tourist vessel traffic was categorized based on the number of times each vessel crossed a 5km^2 area per year, resulting in five categories: very low (1-10 $vessels/5km^2/year$), low (10-100 $vessels/5km^2/year$), medium (100-1,000 $vessels/5km^2/year$), high (1,000-10,000 $vessels/5km^2/year$), and very high (>10,000 $vessels/5km^2/year$).
+
+To examine the relationships between vessel traffic over the years and identify tourist shipping lanes, we used global and focal operations to conduct pairwise Spearman's correlations. Focal functions assign to the output cells a computed value (*e.g.*, sum, mean, etc.) to neighboring cells from the input raster, applied on a kernel region defined previously (Tomlin, 1994).Global operations, in contrast, can use all input cells when calculating an output cell value, or use a unique value like mean or sum of all pixels in the raster [@Tomlin1994]. We used the "*corr*" and the "*corLocal*'' command of the R"*raster*" package, which use a global and focal approach, respectively, to build the correlation. The focal correlation was performed using five random neighboring pixels on the kernel, using previous categorized values for tourist-vessel traffic, to obtain a raster with the correlation indexes.
+
+We performed focal correlations using five random neighboring pixels on the kernel, based on the previous categorized values for tourist-vessel traffic, to obtain a raster with the correlation indexes. Only positive Spearman's correlation coefficients (ρ) were classified into five categories: very low ($ρ < 0.2$), low ($0.2 ≤ ρ ≤ 0.4$), medium ($0.4 ≤ ρ ≤ 0.6$), high ($0.6 ≤ ρ ≤ 0.8$), and very high ($0.8 ≤ ρ ≤ 1$), using the 'Reclassify' tool in the Spatial Analysis Tool of ESRI's ArcGIS® program (v. 10.6; @ESRI2017).
+
+
+To generate the final geographic layer with the tourist shipping lanes for each vessel type, we created an average geographic mosaic using the categorized Spearman's correlation coefficient layers obtained from the pairwise focal correlations.
+
+
 
 
 # REFERENCES
